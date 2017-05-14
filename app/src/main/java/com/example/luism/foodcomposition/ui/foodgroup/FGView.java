@@ -6,6 +6,8 @@ public interface FGView extends BaseView {
 
     void onDataLoaded(FG_ListItems listItems);
 
+    void onListItemClicked(int id);
+
     void onClearData();
 
     void showLoading();

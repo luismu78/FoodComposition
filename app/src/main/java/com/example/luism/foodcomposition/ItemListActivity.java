@@ -38,7 +38,7 @@ public class ItemListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_item_list);
+        setContentView(R.layout.activity_group_list);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -53,7 +53,7 @@ public class ItemListActivity extends AppCompatActivity {
             }
         });
 
-        View recyclerView = findViewById(R.id.item_list);
+        View recyclerView = findViewById(R.id.rvItemList);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
 
