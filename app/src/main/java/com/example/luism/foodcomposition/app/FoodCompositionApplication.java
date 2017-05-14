@@ -35,4 +35,8 @@ public class FoodCompositionApplication extends Application {
                 .appModule(new AppModule(application))
                 .build();
     }
+
+    public AppComponent getAppComponent() {
+        return appComponent;
+    }
 }
