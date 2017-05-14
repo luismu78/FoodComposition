@@ -1,7 +1,7 @@
 package com.example.luism.foodcomposition.network;
 
-import com.example.luism.foodcomposition.pojos.FG_ListItems;
-import com.example.luism.foodcomposition.pojos.F_ListItems;
+import com.example.luism.foodcomposition.ui.foodgroup.FG_ListItems;
+import com.example.luism.foodcomposition.ui.foodgroupdetail.F_ListItems;
 
 import io.reactivex.Single;
 import okhttp3.RequestBody;

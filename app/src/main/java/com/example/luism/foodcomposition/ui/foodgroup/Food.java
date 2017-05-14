@@ -1,4 +1,4 @@
-package com.example.luism.foodcomposition.pojos.FG;
+package com.example.luism.foodcomposition.ui.foodgroup;
 
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
