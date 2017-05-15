@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -11,6 +12,7 @@ import android.util.Log;
 import com.example.luism.foodcomposition.R;
 import com.example.luism.foodcomposition.app.FoodCompositionApplication;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -48,6 +50,10 @@ public class FGActivity extends AppCompatActivity implements FGView {
             twoPane = true;
         }
 
+        rvItemList.setAdapter(new FGAdapter(this, new ArrayList<Food>()));
+        rvItemList.setLayoutManager(new LinearLayoutManager(this));
+        rvItemList.setHasFixedSize(true);
+
         presenter.setView(this);
     }
 
@@ -60,7 +66,8 @@ public class FGActivity extends AppCompatActivity implements FGView {
 
     @Override
     public void onDataLoaded(List<Food> listItems) {
-        Log.d("HOLA", "FGActivity.onDataLoaded  listItems.size(): " + listItems.size());
+        rvItemList.setAdapter(new FGAdapter(this, listItems));
+        rvItemList.getAdapter().notifyDataSetChanged();
     }
 
     @Override
