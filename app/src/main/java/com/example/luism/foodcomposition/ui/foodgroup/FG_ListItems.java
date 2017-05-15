@@ -11,7 +11,7 @@ public class FG_ListItems {
     @ElementList(name = "foodresponse", inline = true)
     private List<Food> foodResponse;
 
-    public List<Food> getFoodResponse() {
+    List<Food> getFoodResponse() {
         return foodResponse;
     }
 }

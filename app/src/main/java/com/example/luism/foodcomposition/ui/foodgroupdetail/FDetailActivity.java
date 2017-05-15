@@ -29,7 +29,7 @@ public class FDetailActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             // Create the detail fragment and add it to the activity
             Bundle args = new Bundle();
-            args.putString(FDetailFragment.ARG_ITEM_ID, getIntent().getStringExtra(FDetailFragment.ARG_ITEM_ID));
+            args.putInt(FDetailFragment.ARG_ITEM_ID, getIntent().getIntExtra(FDetailFragment.ARG_ITEM_ID, 0));
             FDetailFragment fragment = new FDetailFragment();
             fragment.setArguments(args);
             getSupportFragmentManager().beginTransaction()

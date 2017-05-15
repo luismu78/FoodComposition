@@ -22,7 +22,7 @@ public class FGPresenterImpl implements FGPresenter {
     BedcaApi bedcaApi;
 
     private FGView view;
-    CompositeDisposable compositeDisposable = new CompositeDisposable();
+    private CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     public FGPresenterImpl(Context context) {
         ((FoodCompositionApplication) context).getAppComponent().inject(this);

@@ -4,7 +4,7 @@ import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
 @Root(name = "food", strict = false)
-public class Food {
+class Food {
 
     @Element(name = "fg_id")
     private int fg_id;
@@ -18,15 +18,15 @@ public class Food {
     public Food() {
     }
 
-    public int getFg_id() {
+    int getFg_id() {
         return fg_id;
     }
 
-    public String getFg_ori_name() {
+    String getFg_ori_name() {
         return fg_ori_name;
     }
 
-    public String getFg_eng_name() {
+    String getFg_eng_name() {
         return fg_eng_name;
     }
 }

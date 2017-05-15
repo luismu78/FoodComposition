@@ -3,11 +3,9 @@ package com.example.luism.foodcomposition.ui.foodgroup;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.luism.foodcomposition.R;
 import com.example.luism.foodcomposition.ui.foodgroupdetail.FDetailActivity;
@@ -15,7 +13,7 @@ import com.example.luism.foodcomposition.ui.foodgroupdetail.FDetailFragment;
 
 import java.util.List;
 
-public class FGAdapter extends RecyclerView.Adapter<FGViewHolder> {
+class FGAdapter extends RecyclerView.Adapter<FGViewHolder> {
     private List<Food> foodGroupList;
     private Context context;
 
@@ -34,12 +32,10 @@ public class FGAdapter extends RecyclerView.Adapter<FGViewHolder> {
     public void onBindViewHolder(FGViewHolder holder, int position) {
         final Food food = foodGroupList.get(position);
         holder.getTvName().setText(food.getFg_ori_name()); // TODO: lang
-        holder.getTvId().setText("" + food.getFg_id());
+        holder.getTvId().setText(String.valueOf(food.getFg_id()));
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Toast.makeText(context, "CLICK", Toast.LENGTH_SHORT).show();
-//                //TODO: resolve click
                 Intent intent = new Intent(context, FDetailActivity.class);
                 intent.putExtra(FDetailFragment.ARG_ITEM_ID, food.getFg_id());
                 context.startActivity(intent);

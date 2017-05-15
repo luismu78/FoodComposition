@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 
 import com.example.luism.foodcomposition.R;
 import com.example.luism.foodcomposition.app.FoodCompositionApplication;
@@ -38,7 +37,7 @@ public class FGActivity extends AppCompatActivity implements FGView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group_list);
 
-        ((FoodCompositionApplication)getApplication()).getAppComponent().inject(this);
+        ((FoodCompositionApplication) getApplication()).getAppComponent().inject(this);
 
         ButterKnife.bind(this);
 

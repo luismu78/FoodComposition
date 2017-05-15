@@ -4,7 +4,7 @@ import com.example.luism.foodcomposition.ui.base.BaseView;
 
 import java.util.List;
 
-public interface FGView extends BaseView {
+interface FGView extends BaseView {
 
     void onDataLoaded(List<Food> listItems);
 

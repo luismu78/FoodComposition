@@ -24,7 +24,7 @@ public class FDetailFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         if (getArguments().containsKey(ARG_ITEM_ID)) {
-            // Load the Items
+            // Load the Items // es un int
         }
     }
 
