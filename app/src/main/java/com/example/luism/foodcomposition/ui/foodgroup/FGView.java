@@ -2,9 +2,11 @@ package com.example.luism.foodcomposition.ui.foodgroup;
 
 import com.example.luism.foodcomposition.ui.base.BaseView;
 
+import java.util.List;
+
 public interface FGView extends BaseView {
 
-    void onDataLoaded(FG_ListItems listItems);
+    void onDataLoaded(List<Food> listItems);
 
     void onListItemClicked(int id);
 

@@ -34,6 +34,7 @@ public class NetworkModule {
     private static final int HTTP_RESPONSE_DISK_CACHE_MAX_SIZE = 256 * 1024; // 256k
     private static final int HTTP_RESPONSE_DISK_CACHE_MAX_AGE = 24 * 60 * 60; // 24 horas
 
+    @Provides
     @Named(NAME_BASE_URL)
     String provideBaseUrlString() {
         return Constants.BASE_URL_BEDCA;

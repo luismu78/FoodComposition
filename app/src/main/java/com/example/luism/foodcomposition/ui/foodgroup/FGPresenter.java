@@ -5,4 +5,6 @@ public interface FGPresenter {
     void setView(FGView view);
 
     void getFoodGroups();
+
+    void cleanup();
 }
