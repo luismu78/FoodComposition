@@ -8,8 +8,6 @@ interface FGView extends BaseView {
 
     void onDataLoaded(List<Food> listItems);
 
-    void onListItemClicked(int id);
-
     void onClearData();
 
     void showLoading();
