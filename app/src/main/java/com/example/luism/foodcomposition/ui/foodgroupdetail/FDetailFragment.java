@@ -30,7 +30,7 @@ public class FDetailFragment extends Fragment {
             id = getArguments().getInt(ARG_ITEM_ID);
         }
 
-        Log.d("HOLA", getClass().getSimpleName() + "  el id recivido es: " + id);
+        Log.d("HOLA", getClass().getSimpleName() + "  el id recibido es: " + id);
     }
 
     @Nullable
