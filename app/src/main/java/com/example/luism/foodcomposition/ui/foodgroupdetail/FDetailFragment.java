@@ -3,16 +3,23 @@ package com.example.luism.foodcomposition.ui.foodgroupdetail;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.luism.foodcomposition.R;
 
 public class FDetailFragment extends Fragment {
 
     public static final String ARG_ITEM_ID = "item_id";
+
+    private SwipeRefreshLayout swipeContainer;
+    private RecyclerView rvFoodItems;
+    private TextView empty_view;
 
 //    private F_ListItems items;
     private int id = 0;
@@ -37,6 +44,10 @@ public class FDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.item_detail, container, false);
+
+        swipeContainer = (SwipeRefreshLayout) rootView.findViewById(R.id.swipeContainer);
+        rvFoodItems = (RecyclerView) rootView.findViewById(R.id.rvFoodItems);
+        empty_view = (TextView) rootView.findViewById(R.id.empty_view);
 
         return rootView;
     }
