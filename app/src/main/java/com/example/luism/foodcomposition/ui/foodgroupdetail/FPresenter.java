@@ -5,4 +5,6 @@ public interface FPresenter {
     void setView(FView view);
 
     void getFood();
+
+    void cleanup();
 }

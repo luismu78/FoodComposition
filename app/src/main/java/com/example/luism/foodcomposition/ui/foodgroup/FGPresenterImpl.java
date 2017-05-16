@@ -62,12 +62,7 @@ public class FGPresenterImpl implements FGPresenter {
                 .subscribe(new Consumer<FG_ListItems>() {
                     @Override
                     public void accept(@NonNull FG_ListItems fg_listItems) throws Exception {
-                        for (Food item : fg_listItems.getFoodResponse()) {
-                            Log.d("HOLA", "Id: " + item.getFg_id());
-                            Log.d("HOLA", "Name: " + item.getFg_eng_name());
-                            Log.d("HOLA", "Nombre: " + item.getFg_ori_name());
-                            Log.d("HOLA", " ");
-                        }
+
 
                         view.onDataLoaded(fg_listItems.getFoodResponse());
                         view.hideLoading();

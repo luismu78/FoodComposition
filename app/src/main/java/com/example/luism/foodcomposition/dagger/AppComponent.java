@@ -2,6 +2,7 @@ package com.example.luism.foodcomposition.dagger;
 
 import com.example.luism.foodcomposition.ui.foodgroup.FGActivity;
 import com.example.luism.foodcomposition.ui.foodgroup.FGPresenterImpl;
+import com.example.luism.foodcomposition.ui.foodgroupdetail.FPresenterImpl;
 
 import javax.inject.Singleton;
 
@@ -19,4 +20,6 @@ public interface AppComponent {
     void inject(FGPresenterImpl target);
 
     void inject(FGActivity target);
+
+    void inject(FPresenterImpl target);
 }
