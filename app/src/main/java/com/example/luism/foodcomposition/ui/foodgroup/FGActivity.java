@@ -27,8 +27,8 @@ public class FGActivity extends AppCompatActivity implements FGView {
     @BindView(R.id.rvItemList)
     RecyclerView rvItemList;
 
-    @BindView(R.id.swipeContainer)
-    SwipeRefreshLayout swipeRefreshLayout;
+//    @BindView(R.id.swipeContainer)
+//    SwipeRefreshLayout swipeRefreshLayout;
 
     private boolean twoPane;
 
@@ -81,11 +81,11 @@ public class FGActivity extends AppCompatActivity implements FGView {
 
     @Override
     public void showLoading() {
-        swipeRefreshLayout.setRefreshing(true);
+//        swipeRefreshLayout.setRefreshing(true);
     }
 
     @Override
     public void hideLoading() {
-        swipeRefreshLayout.setRefreshing(false);
+//        swipeRefreshLayout.setRefreshing(false);
     }
 }
