@@ -11,7 +11,9 @@ import android.view.MenuItem;
 import com.example.luism.foodcomposition.R;
 import com.example.luism.foodcomposition.ui.foodgroup.FGActivity;
 
-public class FDetailActivity extends AppCompatActivity {
+import java.util.List;
+
+public class FDetailActivity extends AppCompatActivity implements FView {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -26,6 +28,15 @@ public class FDetailActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
+        // savedInstanceState is non-null when there is fragment state
+        // saved from previous configurations of this activity
+        // (e.g. when rotating the screen from portrait to landscape).
+        // In this case, the fragment will automatically be re-added
+        // to its container so we don't need to manually add it.
+        // For more information, see the Fragments API guide at:
+        //
+        // http://developer.android.com/guide/components/fragments.html
+        //
         if (savedInstanceState == null) {
             // Create the detail fragment and add it to the activity
             Bundle args = new Bundle();
@@ -47,5 +58,27 @@ public class FDetailActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    //
+
+    @Override
+    public void onDataLoaded(List<Food> listItems) {
+
+    }
+
+    @Override
+    public void onClearData() {
+
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
     }
 }
