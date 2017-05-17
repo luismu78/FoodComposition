@@ -4,7 +4,7 @@ public interface FPresenter {
 
     void setView(FView view);
 
-    void getFood();
+    void getFood(int id);
 
     void cleanup();
 }

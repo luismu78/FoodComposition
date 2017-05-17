@@ -4,17 +4,17 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.example.luism.foodcomposition.R;
 import com.example.luism.foodcomposition.app.FoodCompositionApplication;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -22,7 +22,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class FDetailFragment extends Fragment implements FView {
+public class FDetailFragment extends Fragment implements FView, FAdapter.FAdapterClickListener {
 
     public static final String ARG_ITEM_ID = "item_id";
 
@@ -42,7 +42,7 @@ public class FDetailFragment extends Fragment implements FView {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ((FoodCompositionApplication)getActivity().getApplication()).getAppComponent().inject(this);
+        ((FoodCompositionApplication) getActivity().getApplication()).getAppComponent().inject(this);
 
         if (getArguments().containsKey(ARG_ITEM_ID)) {
             // Load the Items // es un int
@@ -66,7 +66,9 @@ public class FDetailFragment extends Fragment implements FView {
         ButterKnife.bind(rootView);
 
         rvFoodItems = (RecyclerView) rootView.findViewById(R.id.rvFoodItems);
-//        rvFoodItems.setAdapter();
+        rvFoodItems.setAdapter(new FAdapter(getContext(), new ArrayList<Food>(), this));
+        rvFoodItems.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvFoodItems.setHasFixedSize(true);
 
         presenter.setView(this);
 
@@ -77,7 +79,7 @@ public class FDetailFragment extends Fragment implements FView {
     public void onResume() {
         super.onResume();
 
-        presenter.getFood();
+        presenter.getFood(id);
     }
 
     @Override
@@ -88,6 +90,8 @@ public class FDetailFragment extends Fragment implements FView {
             Log.d("HOLA", "name: " + food.getF_eng_name());
             Log.d("HOLA", "nombre: " + food.getF_ori_name());
         }
+        rvFoodItems.setAdapter(new FAdapter(getContext(), listItems, this));
+        rvFoodItems.getAdapter().notifyDataSetChanged();
     }
 
     @Override
@@ -103,5 +107,10 @@ public class FDetailFragment extends Fragment implements FView {
     @Override
     public void hideLoading() {
         Log.d("HOLA", "===== LOADED ====");
+    }
+
+    @Override
+    public void onListItemClicked(int id) {
+        Log.d("HOLA", "item clicked with id: " + id);
     }
 }
