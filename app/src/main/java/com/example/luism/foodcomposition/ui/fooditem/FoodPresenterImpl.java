@@ -46,6 +46,19 @@ public class FoodPresenterImpl implements FoodPresenter {
                     public void accept(@NonNull FoodItemResponse foodItemResponse) throws Exception {
                         Log.d("HOLA", "-----------------------------------------");
                         Log.d("HOLA", "foodItemResponse.getFood().size(): " + foodItemResponse.getFood().size());
+                        for (Food f : foodItemResponse.getFood()) {
+                            Log.d("HOLA", "f.getF_id(): " + f.getF_id());
+                            Log.d("HOLA", "f.getF_eng_name(): " + f.getF_eng_name());
+                            Log.d("HOLA", "f.getF_ori_name(): " + f.getF_ori_name());
+                            Log.d("HOLA", "f.getFoodvalue().size(): " + f.getFoodvalue().size());
+                            for (FoodValue fv : f.getFoodvalue()) {
+                                // <cg_descripcion>Proximales</cg_descripcion>
+                                Log.d("HOLA", "    fv.getC_eng_name(): " + fv.getC_eng_name());
+                                Log.d("HOLA", "    fv.getC_ori_name(): " + fv.getC_ori_name());
+                                Log.d("HOLA", "    fv.getBest_location(): " + fv.getBest_location());
+                                Log.d("HOLA", "    fv.getV_unit(): " + fv.getV_unit());
+                            }
+                        }
                         Log.d("HOLA", "foodItemResponse.getComponentList().size(): " + foodItemResponse.getComponentList().size());
                     }
                 });
