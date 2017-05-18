@@ -23,4 +23,24 @@ public class Food {
 
     @ElementList(inline = true, required = false)
     private List<FoodValue> foodvalue;
+
+    public int getF_id() {
+        return f_id;
+    }
+
+    public String getF_ori_name() {
+        return f_ori_name;
+    }
+
+    public String getF_eng_name() {
+        return f_eng_name;
+    }
+
+    public String getEdible_portion() {
+        return edible_portion;
+    }
+
+    public List<FoodValue> getFoodvalue() {
+        return foodvalue;
+    }
 }

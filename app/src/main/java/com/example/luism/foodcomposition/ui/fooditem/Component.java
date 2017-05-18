@@ -17,4 +17,20 @@ public class Component {
 
     @Element(name = "name_ing", required = false)
     private String name_ing;
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName_esp() {
+        return name_esp;
+    }
+
+    public String getGroup() {
+        return group;
+    }
+
+    public String getName_ing() {
+        return name_ing;
+    }
 }

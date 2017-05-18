@@ -31,7 +31,7 @@ public class FoodValue {
     private String cg_descripcion;
 
     @Element(name = "best_location", required = false)
-    private int best_location;
+    private String best_location;
 
     @Element(name = "v_unit", required = false)
     private String v_unit;
@@ -117,4 +117,151 @@ public class FoodValue {
     @Element(name = "mhd_description", required = false)
     private String mhd_description;
 
+    public int getC_id() {
+        return c_id;
+    }
+
+    public String getC_ori_name() {
+        return c_ori_name;
+    }
+
+    public String getC_eng_name() {
+        return c_eng_name;
+    }
+
+    public String getALC() {
+        return ALC;
+    }
+
+    public int getComponentgroup_id() {
+        return componentgroup_id;
+    }
+
+    public String getGlos_esp() {
+        return glos_esp;
+    }
+
+    public String getGlos_ing() {
+        return glos_ing;
+    }
+
+    public String getCg_descripcion() {
+        return cg_descripcion;
+    }
+
+    public String getBest_location() {
+        return best_location;
+    }
+
+    public String getV_unit() {
+        return v_unit;
+    }
+
+    public String getMoex() {
+        return moex;
+    }
+
+    public String getStdv() {
+        return stdv;
+    }
+
+    public String getMin() {
+        return min;
+    }
+
+    public String getMax() {
+        return max;
+    }
+
+    public String getG() {
+        return g;
+    }
+
+    public String getU_descripcion() {
+        return u_descripcion;
+    }
+
+    public String getU_description() {
+        return u_description;
+    }
+
+    public String getValue_type() {
+        return value_type;
+    }
+
+    public String getVt_descripcion() {
+        return vt_descripcion;
+    }
+
+    public String getVt_description() {
+        return vt_description;
+    }
+
+    public String getMu_id() {
+        return mu_id;
+    }
+
+    public String getMu_descripcion() {
+        return mu_descripcion;
+    }
+
+    public String getMu_description() {
+        return mu_description;
+    }
+
+    public int getRef_id() {
+        return ref_id;
+    }
+
+    public String getAt_descripcion() {
+        return at_descripcion;
+    }
+
+    public String getAt_description() {
+        return at_description;
+    }
+
+    public String getPt_descripcion() {
+        return pt_descripcion;
+    }
+
+    public String getPt_description() {
+        return pt_description;
+    }
+
+    public int getMethod_id() {
+        return method_id;
+    }
+
+    public String getMt_descripcion() {
+        return mt_descripcion;
+    }
+
+    public String getMt_description() {
+        return mt_description;
+    }
+
+    public String getM_descripcion() {
+        return m_descripcion;
+    }
+
+    public String getM_description() {
+        return m_description;
+    }
+
+    public String getM_nom_esp() {
+        return m_nom_esp;
+    }
+
+    public String getM_nom_ing() {
+        return m_nom_ing;
+    }
+
+    public String getMhd_descripcion() {
+        return mhd_descripcion;
+    }
+
+    public String getMhd_description() {
+        return mhd_description;
+    }
 }

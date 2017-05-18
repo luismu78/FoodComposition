@@ -10,4 +10,8 @@ public class ComponentList {
 
     @ElementList(inline = true, required = false)
     private List<Component> components;
+
+    public List<Component> getComponents() {
+        return components;
+    }
 }
