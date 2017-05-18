@@ -1,5 +1,6 @@
 package com.example.luism.foodcomposition.ui.foodgroupdetail;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -13,6 +14,7 @@ import android.view.ViewGroup;
 
 import com.example.luism.foodcomposition.R;
 import com.example.luism.foodcomposition.app.FoodCompositionApplication;
+import com.example.luism.foodcomposition.ui.fooditem.FoodItemActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -103,6 +105,8 @@ public class FDetailFragment extends Fragment implements FView, FAdapter.FAdapte
 
     @Override
     public void onListItemClicked(int id) {
-        Log.d("HOLA", "item clicked with id: " + id);
+        Intent intent = new Intent(getContext(), FoodItemActivity.class);
+        intent.putExtra(FoodItemActivity.ARG_FOOD_ID, id);
+        startActivity(intent);
     }
 }
