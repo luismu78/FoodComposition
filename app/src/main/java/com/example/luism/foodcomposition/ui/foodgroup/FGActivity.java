@@ -80,7 +80,7 @@ public class FGActivity extends AppCompatActivity implements FGView, FGAdapter.F
             FDetailFragment fragment = new FDetailFragment();
             fragment.setArguments(args);
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.item_detail_container, fragment)
+                    .replace(R.id.item_detail_container, fragment)
                     .commit();
         } else {
             Intent intent = new Intent(this, FDetailActivity.class);

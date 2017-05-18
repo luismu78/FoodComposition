@@ -13,7 +13,7 @@ import com.example.luism.foodcomposition.ui.foodgroup.FGActivity;
 
 import java.util.List;
 
-public class FDetailActivity extends AppCompatActivity implements FView {
+public class FDetailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -60,25 +60,4 @@ public class FDetailActivity extends AppCompatActivity implements FView {
         return super.onOptionsItemSelected(item);
     }
 
-    //
-
-    @Override
-    public void onDataLoaded(List<Food> listItems) {
-
-    }
-
-    @Override
-    public void onClearData() {
-
-    }
-
-    @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
 }
