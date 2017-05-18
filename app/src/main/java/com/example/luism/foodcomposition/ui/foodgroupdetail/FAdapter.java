@@ -10,7 +10,7 @@ import com.example.luism.foodcomposition.R;
 
 import java.util.List;
 
-public class FAdapter extends RecyclerView.Adapter<FViewHolder> {
+class FAdapter extends RecyclerView.Adapter<FViewHolder> {
     private List<Food> foodList;
     private Context context;
     private FAdapterClickListener listener;

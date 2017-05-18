@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 
 import com.example.luism.foodcomposition.R;
 import com.example.luism.foodcomposition.app.FoodCompositionApplication;
@@ -74,10 +73,8 @@ public class FGActivity extends AppCompatActivity implements FGView, FGAdapter.F
 
     @Override
     public void onListItemClicked(int id) {
-        Log.d("HOLA", "El id clickado es: " + id);
 
         if (twoPane) {
-            Log.d("HOLA", "twoPane");
             Bundle args = new Bundle();
             args.putInt(FDetailFragment.ARG_ITEM_ID, id);
             FDetailFragment fragment = new FDetailFragment();
@@ -86,7 +83,6 @@ public class FGActivity extends AppCompatActivity implements FGView, FGAdapter.F
                     .add(R.id.item_detail_container, fragment)
                     .commit();
         } else {
-            Log.d("HOLA", "single pane");
             Intent intent = new Intent(this, FDetailActivity.class);
             intent.putExtra(FDetailFragment.ARG_ITEM_ID, id);
             startActivity(intent);

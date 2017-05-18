@@ -45,7 +45,6 @@ public class FDetailFragment extends Fragment implements FView, FAdapter.FAdapte
         ((FoodCompositionApplication) getActivity().getApplication()).getAppComponent().inject(this);
 
         if (getArguments().containsKey(ARG_ITEM_ID)) {
-            // Load the Items // es un int
             id = getArguments().getInt(ARG_ITEM_ID);
 
             CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) getActivity().findViewById(R.id.toolbar_layout);
@@ -54,7 +53,6 @@ public class FDetailFragment extends Fragment implements FView, FAdapter.FAdapte
             }
         }
 
-        Log.d("HOLA", getClass().getSimpleName() + "  el id recibido es: " + id);
     }
 
     @Nullable
@@ -84,12 +82,6 @@ public class FDetailFragment extends Fragment implements FView, FAdapter.FAdapte
 
     @Override
     public void onDataLoaded(List<Food> listItems) {
-        for (Food food : listItems) {
-            Log.d("HOLA", "------------------");
-            Log.d("HOLA", "id: " + food.getF_id());
-            Log.d("HOLA", "name: " + food.getF_eng_name());
-            Log.d("HOLA", "nombre: " + food.getF_ori_name());
-        }
         rvFoodItems.setAdapter(new FAdapter(getContext(), listItems, this));
         rvFoodItems.getAdapter().notifyDataSetChanged();
     }
