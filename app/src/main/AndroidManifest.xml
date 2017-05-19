@@ -39,7 +39,7 @@
             android:name=".ui.fooditem.FoodItemActivity"
             android:label="Food"
             android:parentActivityName=".ui.foodgroup.FGActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme">
         </activity>
     </application>
 

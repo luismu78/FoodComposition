@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 
 import com.example.luism.foodcomposition.R;
 import com.example.luism.foodcomposition.app.FoodCompositionApplication;
@@ -67,6 +68,7 @@ public class FGActivity extends AppCompatActivity implements FGView, FGAdapter.F
 
     @Override
     public void onDataLoaded(List<Food> listItems) {
+        Log.d("HOLA", getClass().getSimpleName() + " - listItems.size(): " + listItems.size());
         rvItemList.setAdapter(new FGAdapter(this, listItems, this));
         rvItemList.getAdapter().notifyDataSetChanged();
     }

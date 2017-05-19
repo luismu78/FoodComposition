@@ -33,7 +33,7 @@ public class FoodPresenterImpl implements FoodPresenter {
 
     @Override
     public void getData(int id) {
-//        view.showView();
+        view.showLoading();
 
         Log.d("HOLA", "+++++++++++++++++++ id: " + id);
 
@@ -60,6 +60,9 @@ public class FoodPresenterImpl implements FoodPresenter {
                             }
                         }
                         Log.d("HOLA", "foodItemResponse.getComponentList().size(): " + foodItemResponse.getComponentList().size());
+
+                        view.onDataLoaded(foodItemResponse.getFood().get(0)); // TODO: quitar la lista de aqui
+                        view.hideLoading();
                     }
                 });
     }
