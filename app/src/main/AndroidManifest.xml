@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.luism.foodcomposition">
+    package="es.cervecitas.food.foodcomposition">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
-        android:name=".app.FoodCompositionApplication"
+        android:name="es.cervecitas.food.foodcomposition.app.FoodCompositionApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".ui.foodgroup.FGActivity"
+            android:name="es.cervecitas.food.foodcomposition.ui.foodgroup.FGActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -26,19 +26,19 @@
         </activity>
 
         <activity
-            android:name=".ui.foodgroupdetail.FDetailActivity"
+            android:name="es.cervecitas.food.foodcomposition.ui.foodgroupdetail.FDetailActivity"
             android:label="@string/title_item_detail"
-            android:parentActivityName=".ui.foodgroup.FGActivity"
+            android:parentActivityName="es.cervecitas.food.foodcomposition.ui.foodgroup.FGActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.foodgroupdetail.FDetailActivity" />
+                android:value="es.cervecitas.food.foodcomposition.ui.foodgroupdetail.FDetailActivity" />
         </activity>
 
         <activity
-            android:name=".ui.fooditem.FoodItemActivity"
+            android:name="es.cervecitas.food.foodcomposition.ui.fooditem.FoodItemActivity"
             android:label="Food"
-            android:parentActivityName=".ui.foodgroup.FGActivity"
+            android:parentActivityName="es.cervecitas.food.foodcomposition.ui.foodgroup.FGActivity"
             android:theme="@style/AppTheme">
         </activity>
     </application>
