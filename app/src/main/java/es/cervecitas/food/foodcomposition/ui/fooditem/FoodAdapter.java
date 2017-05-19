@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import es.cervecitas.food.foodcomposition.R;
+import es.cervecitas.food.foodcomposition.app.Utils;
 
 class FoodAdapter extends RecyclerView.Adapter<FoodViewHolder> {
     private List<FoodValue> foodValues;
@@ -30,15 +31,18 @@ class FoodAdapter extends RecyclerView.Adapter<FoodViewHolder> {
 
         final FoodValue fv = foodValues.get(position);
 
-        holder.getTvName().setText(fv.getC_ori_name()); // TODO: lang
+        holder.getTvName().setText(Utils.capitalizeFirstLetter(fv.getC_ori_name())); // TODO: lang
+        String description = Utils.capitalizeFirstLetter(fv.getMu_descripcion());
         holder.getTvQuantity().setText(
                 fv.getBest_location() + " "
                         + fv.getV_unit() + " "
-                        + fv.getMu_descripcion());
+                        + description);
     }
 
     @Override
     public int getItemCount() {
         return foodValues.size();
     }
+
+
 }
