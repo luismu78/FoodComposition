@@ -31,7 +31,10 @@ class FoodAdapter extends RecyclerView.Adapter<FoodViewHolder> {
         final FoodValue fv = foodValues.get(position);
 
         holder.getTvName().setText(fv.getC_ori_name()); // TODO: lang
-        holder.getTvQuantity().setText(fv.getBest_location() + " " + fv.getV_unit());
+        holder.getTvQuantity().setText(
+                fv.getBest_location() + " "
+                        + fv.getV_unit() + " "
+                        + fv.getMu_descripcion());
     }
 
     @Override

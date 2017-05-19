@@ -7,11 +7,11 @@ import android.widget.TextView;
 import es.cervecitas.food.foodcomposition.R;
 
 
-public class FoodViewHolder extends RecyclerView.ViewHolder{
+class FoodViewHolder extends RecyclerView.ViewHolder{
     private TextView tvName;
     private TextView tvQuantity;
 
-    public FoodViewHolder(View itemView) {
+    FoodViewHolder(View itemView) {
         super(itemView);
 
         tvName = (TextView) itemView.findViewById(R.id.tvName);
@@ -22,7 +22,7 @@ public class FoodViewHolder extends RecyclerView.ViewHolder{
         return tvName;
     }
 
-    public TextView getTvQuantity() {
+    TextView getTvQuantity() {
         return tvQuantity;
     }
 }
