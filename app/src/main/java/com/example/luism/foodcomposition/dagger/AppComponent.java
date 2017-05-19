@@ -4,6 +4,8 @@ import com.example.luism.foodcomposition.ui.foodgroup.FGActivity;
 import com.example.luism.foodcomposition.ui.foodgroup.FGPresenterImpl;
 import com.example.luism.foodcomposition.ui.foodgroupdetail.FDetailFragment;
 import com.example.luism.foodcomposition.ui.foodgroupdetail.FPresenterImpl;
+import com.example.luism.foodcomposition.ui.fooditem.FoodItemActivity;
+import com.example.luism.foodcomposition.ui.fooditem.FoodPresenterImpl;
 
 import javax.inject.Singleton;
 
@@ -25,4 +27,8 @@ public interface AppComponent {
     void inject(FPresenterImpl target);
 
     void inject(FDetailFragment target);
+
+    void inject(FoodItemActivity target);
+
+    void inject(FoodPresenterImpl target);
 }
