@@ -2,7 +2,6 @@ package com.example.luism.foodcomposition.ui.fooditem;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -10,15 +9,13 @@ import com.example.luism.foodcomposition.R;
 
 import java.util.List;
 
-public class FoodAdapter extends RecyclerView.Adapter<FoodViewHolder> {
+class FoodAdapter extends RecyclerView.Adapter<FoodViewHolder> {
     private List<FoodValue> foodValues;
     private Context context;
 
     FoodAdapter(List<FoodValue> foodValues, Context context) {
         this.foodValues = foodValues;
         this.context = context;
-
-
     }
 
     @Override
@@ -29,7 +26,6 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodViewHolder> {
 
     @Override
     public void onBindViewHolder(FoodViewHolder holder, int position) {
-        Log.d("HOLA", "position: " + position);
 
         final FoodValue fv = foodValues.get(position);
 
@@ -39,7 +35,6 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodViewHolder> {
 
     @Override
     public int getItemCount() {
-        Log.d("HOLA", "foodValues.size(): " + foodValues.size());
         return foodValues.size();
     }
 }
