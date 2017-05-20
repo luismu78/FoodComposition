@@ -3,6 +3,7 @@ package es.cervecitas.food.foodcomposition.ui.fooditem;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 
@@ -30,6 +31,11 @@ class FoodAdapter extends RecyclerView.Adapter<FoodViewHolder> {
     public void onBindViewHolder(FoodViewHolder holder, int position) {
 
         final FoodValue fv = foodValues.get(position);
+
+        if (position == 0 || !foodValues.get(position - 1).getCg_descripcion().equals(fv.getCg_descripcion())) {
+            holder.getListHeaderLayout().setVisibility(View.VISIBLE);
+            holder.getListHeaderItem().setText(fv.getCg_descripcion());
+        }
 
         holder.getTvName().setText(Utils.capitalizeFirstLetter(fv.getC_ori_name())); // TODO: lang
         String description = Utils.capitalizeFirstLetter(fv.getMu_descripcion());
