@@ -5,10 +5,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.TextView;
-
-import es.cervecitas.food.foodcomposition.R;
-import es.cervecitas.food.foodcomposition.app.FoodCompositionApplication;
 
 import java.util.ArrayList;
 
@@ -16,6 +12,8 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import es.cervecitas.food.foodcomposition.R;
+import es.cervecitas.food.foodcomposition.app.FoodCompositionApplication;
 
 public class FoodItemActivity extends AppCompatActivity implements FoodView {
 
@@ -24,8 +22,8 @@ public class FoodItemActivity extends AppCompatActivity implements FoodView {
     @Inject
     FoodPresenter presenter;
 
-    @BindView(R.id.tvName)
-    TextView tvName;
+//    @BindView(R.id.tvName)
+//    TextView tvName;
 
     @BindView(R.id.rvItemList)
     RecyclerView rvItemList;
@@ -43,7 +41,7 @@ public class FoodItemActivity extends AppCompatActivity implements FoodView {
 
         id = getIntent().getIntExtra(ARG_FOOD_ID, 0);
 
-        rvItemList.setAdapter(new FoodAdapter(new ArrayList<FoodValue>(), this));
+        rvItemList.setAdapter(new FoodAdapter(new ArrayList<FoodValue>(), "", this));
         rvItemList.setLayoutManager(new LinearLayoutManager(this));
         rvItemList.setHasFixedSize(true);
 
@@ -59,9 +57,7 @@ public class FoodItemActivity extends AppCompatActivity implements FoodView {
 
     @Override
     public void onDataLoaded(Food food) {
-        tvName.setText(food.getF_ori_name());
-
-        rvItemList.setAdapter(new FoodAdapter(food.getFoodvalue(), this));
+        rvItemList.setAdapter(new FoodAdapter(food.getFoodvalue(), food.getF_ori_name(), this));
         rvItemList.getAdapter().notifyDataSetChanged();
     }
 
