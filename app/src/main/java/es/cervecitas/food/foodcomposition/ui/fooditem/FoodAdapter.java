@@ -2,7 +2,6 @@ package es.cervecitas.food.foodcomposition.ui.fooditem;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -16,16 +15,13 @@ class FoodAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private static final int VIEW_TYPE_SEPARATOR = 1;
     private static final int VIEW_TYPE_FOOD = 2;
-    private static final int VIEW_TYPE_TITLE = 3;
 
     private List<FoodValue> foodValues;
     private List<Object> recyclerViewContents;
-    private String foodName;
     private Context context;
 
-    FoodAdapter(List<FoodValue> foodValues, String foodName, Context context) {
+    FoodAdapter(List<FoodValue> foodValues, Context context) {
         this.foodValues = foodValues;
-        this.foodName = foodName;
         this.context = context;
 
         prepareFoodValues();
@@ -35,10 +31,8 @@ class FoodAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         recyclerViewContents = new ArrayList<>();
         String ant = "";
 
-        recyclerViewContents.add(new FoodTitle(foodName));
-
         for (FoodValue fv : foodValues) {
-            if (!fv.getCg_descripcion().equals(ant)) {
+            if ((!fv.getCg_descripcion().equals(ant)) && !fv.getCg_descripcion().equals("Proximales")) {
                 ant = fv.getCg_descripcion();
                 recyclerViewContents.add(ant);
             }
@@ -55,10 +49,7 @@ class FoodAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 return new SeparatorViewHolder(inflater.inflate(R.layout.item_list_group_separator, parent, false));
             case VIEW_TYPE_FOOD:
                 return new FoodViewHolder(inflater.inflate(R.layout.item_list_food_components, parent, false));
-            case VIEW_TYPE_TITLE:
-                return new FoodTitleViewHolder(inflater.inflate(R.layout.item_list_title, parent, false));
             default:
-                Log.d("HOLA", "viewType: " + viewType);
                 return new FoodViewHolder(inflater.inflate(R.layout.item_list_food_components, parent, false));
         }
     }
@@ -79,10 +70,6 @@ class FoodAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 ((FoodViewHolder) holder).getTvQuantity()
                         .setText(fv.getBest_location() + " " + fv.getV_unit() + " " + description);
                 break;
-            case VIEW_TYPE_TITLE:
-                FoodTitle ft = (FoodTitle)recyclerViewContents.get(position);
-                ((FoodTitleViewHolder)holder).getTvName().setText(ft.getTitle());
-                break;
         }
     }
 
@@ -95,8 +82,6 @@ class FoodAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public int getItemViewType(int position) {
         if (recyclerViewContents.get(position).getClass().equals(FoodValue.class)) {
             return VIEW_TYPE_FOOD;
-        } else if (recyclerViewContents.get(position).getClass().equals(FoodTitle.class)) {
-            return VIEW_TYPE_TITLE;
         }
 
         return VIEW_TYPE_SEPARATOR;

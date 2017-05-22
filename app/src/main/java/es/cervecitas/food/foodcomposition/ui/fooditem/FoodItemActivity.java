@@ -2,6 +2,7 @@ package es.cervecitas.food.foodcomposition.ui.fooditem;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -28,6 +29,9 @@ public class FoodItemActivity extends AppCompatActivity implements FoodView {
     @BindView(R.id.rvItemList)
     RecyclerView rvItemList;
 
+    @BindView(R.id.activityFoodCollapsingToolbarLayout)
+    CollapsingToolbarLayout appBarLayout;
+
     private int id = 0;
 
     @Override
@@ -41,7 +45,7 @@ public class FoodItemActivity extends AppCompatActivity implements FoodView {
 
         id = getIntent().getIntExtra(ARG_FOOD_ID, 0);
 
-        rvItemList.setAdapter(new FoodAdapter(new ArrayList<FoodValue>(), "", this));
+        rvItemList.setAdapter(new FoodAdapter(new ArrayList<FoodValue>(), this));
         rvItemList.setLayoutManager(new LinearLayoutManager(this));
         rvItemList.setHasFixedSize(true);
 
@@ -57,8 +61,11 @@ public class FoodItemActivity extends AppCompatActivity implements FoodView {
 
     @Override
     public void onDataLoaded(Food food) {
-        rvItemList.setAdapter(new FoodAdapter(food.getFoodvalue(), food.getF_ori_name(), this));
+        rvItemList.setAdapter(new FoodAdapter(food.getFoodvalue(), this));
         rvItemList.getAdapter().notifyDataSetChanged();
+        if (appBarLayout != null) {
+            appBarLayout.setTitle(food.getF_ori_name());
+        }
     }
 
     @Override

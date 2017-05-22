@@ -39,7 +39,7 @@
             android:name="es.cervecitas.food.foodcomposition.ui.fooditem.FoodItemActivity"
             android:label="Food"
             android:parentActivityName="es.cervecitas.food.foodcomposition.ui.foodgroup.FGActivity"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
     </application>
 
