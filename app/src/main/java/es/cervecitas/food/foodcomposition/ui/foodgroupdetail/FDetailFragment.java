@@ -83,6 +83,12 @@ public class FDetailFragment extends Fragment implements FView, FAdapter.FAdapte
     }
 
     @Override
+    public void onDestroy() {
+        super.onDestroy();
+        presenter.cleanup();
+    }
+
+    @Override
     public void onDataLoaded(List<Food> listItems) {
         rvFoodItems.setAdapter(new FAdapter(getContext(), listItems, this));
         rvFoodItems.getAdapter().notifyDataSetChanged();

@@ -66,6 +66,12 @@ public class FGActivity extends AppCompatActivity implements FGView, FGAdapter.F
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        presenter.cleanup();
+    }
+
+    @Override
     public void onDataLoaded(List<Food> listItems) {
         rvItemList.setAdapter(new FGAdapter(this, listItems, this));
         rvItemList.getAdapter().notifyDataSetChanged();

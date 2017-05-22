@@ -9,6 +9,7 @@ import es.cervecitas.food.foodcomposition.app.FoodCompositionApplication;
 import es.cervecitas.food.foodcomposition.network.BedcaApi;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.MediaType;
@@ -23,6 +24,7 @@ public class FoodPresenterImpl implements FoodPresenter {
     Context context;
 
     private FoodView view;
+    private CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     public FoodPresenterImpl(Context context) {
         ((FoodCompositionApplication) context).getAppComponent().inject(this);
@@ -37,20 +39,26 @@ public class FoodPresenterImpl implements FoodPresenter {
     public void getData(int id) {
         view.showLoading();
 
-        bedcaApi
-                .getFoodItemDetail(
-                        RequestBody.create(
-                                MediaType.parse("text/xml"),
-                                getHeaders() + getSelection() + getProjection(id) + getOrderBy()))
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<FoodItemResponse>() {
-                    @Override
-                    public void accept(@NonNull FoodItemResponse foodItemResponse) throws Exception {
-                        view.onDataLoaded(foodItemResponse.getFood().get(0)); // TODO: quitar la lista de aqui
-                        view.hideLoading();
-                    }
-                });
+        compositeDisposable.add(
+                bedcaApi
+                        .getFoodItemDetail(
+                                RequestBody.create(
+                                        MediaType.parse("text/xml"),
+                                        getHeaders() + getSelection() + getProjection(id) + getOrderBy()))
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(new Consumer<FoodItemResponse>() {
+                            @Override
+                            public void accept(@NonNull FoodItemResponse foodItemResponse) throws Exception {
+                                view.onDataLoaded(foodItemResponse.getFood().get(0)); // TODO: quitar la lista de aqui
+                                view.hideLoading();
+                            }
+                        }));
+    }
+
+    @Override
+    public void cleanup() {
+        compositeDisposable.clear();
     }
 
     private String getHeaders() {
@@ -73,11 +81,11 @@ public class FoodPresenterImpl implements FoodPresenter {
     private String getProjection(int id) {
         return
                 "<condition>" +
-                "<cond1><atribute1 name=\"f_id\"/></cond1><relation type=\"EQUAL\"/><cond3>" + id + "</cond3>" +
-                "</condition>" +
-                "<condition>" +
-                "<cond1><atribute1 name=\"publico\"/></cond1><relation type=\"EQUAL\"/><cond3>1</cond3>" +
-                "</condition>";
+                        "<cond1><atribute1 name=\"f_id\"/></cond1><relation type=\"EQUAL\"/><cond3>" + id + "</cond3>" +
+                        "</condition>" +
+                        "<condition>" +
+                        "<cond1><atribute1 name=\"publico\"/></cond1><relation type=\"EQUAL\"/><cond3>1</cond3>" +
+                        "</condition>";
     }
 
     private String getOrderBy() {

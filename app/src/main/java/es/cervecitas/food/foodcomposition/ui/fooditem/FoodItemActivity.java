@@ -60,6 +60,12 @@ public class FoodItemActivity extends AppCompatActivity implements FoodView {
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        presenter.cleanup();
+    }
+
+    @Override
     public void onDataLoaded(Food food) {
         rvItemList.setAdapter(new FoodAdapter(food.getFoodvalue(), this));
         rvItemList.getAdapter().notifyDataSetChanged();
