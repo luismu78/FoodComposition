@@ -2,11 +2,10 @@ package es.cervecitas.food.foodcomposition.ui.fooditem;
 
 import android.content.Context;
 
-import es.cervecitas.food.foodcomposition.app.FoodCompositionApplication;
-import es.cervecitas.food.foodcomposition.network.BedcaApi;
-
 import javax.inject.Inject;
 
+import es.cervecitas.food.foodcomposition.app.FoodCompositionApplication;
+import es.cervecitas.food.foodcomposition.network.BedcaApi;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Consumer;
