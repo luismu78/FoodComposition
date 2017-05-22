@@ -18,13 +18,13 @@ public class FDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_detail);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
-        setSupportActionBar(toolbar);
-
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
+//        setSupportActionBar(toolbar);
+//
+//        ActionBar actionBar = getSupportActionBar();
+//        if (actionBar != null) {
+//            actionBar.setDisplayHomeAsUpEnabled(true);
+//        }
 
         // savedInstanceState is non-null when there is fragment state
         // saved from previous configurations of this activity

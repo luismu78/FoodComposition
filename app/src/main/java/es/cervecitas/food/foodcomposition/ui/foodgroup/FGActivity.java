@@ -32,7 +32,7 @@ public class FGActivity extends AppCompatActivity implements FGView, FGAdapter.F
 //    @BindView(R.id.swipeContainer)
 //    SwipeRefreshLayout swipeRefreshLayout;
 
-    private boolean twoPane;
+//    private boolean twoPane;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,13 +43,13 @@ public class FGActivity extends AppCompatActivity implements FGView, FGAdapter.F
 
         ButterKnife.bind(this);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.setTitle(getTitle());
-
-        if (findViewById(R.id.item_detail_container) != null) {
-            twoPane = true;
-        }
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
+//        toolbar.setTitle(getTitle());
+//
+//        if (findViewById(R.id.item_detail_container) != null) {
+//            twoPane = true;
+//        }
 
         rvItemList.setAdapter(new FGAdapter(this, new ArrayList<Food>(), this));
         rvItemList.setLayoutManager(new LinearLayoutManager(this));
@@ -80,19 +80,19 @@ public class FGActivity extends AppCompatActivity implements FGView, FGAdapter.F
     @Override
     public void onListItemClicked(int id) {
 
-        if (twoPane) {
-            Bundle args = new Bundle();
-            args.putInt(FDetailFragment.ARG_ITEM_ID, id);
-            FDetailFragment fragment = new FDetailFragment();
-            fragment.setArguments(args);
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.item_detail_container, fragment)
-                    .commit();
-        } else {
+//        if (twoPane) {
+//            Bundle args = new Bundle();
+//            args.putInt(FDetailFragment.ARG_ITEM_ID, id);
+//            FDetailFragment fragment = new FDetailFragment();
+//            fragment.setArguments(args);
+//            getSupportFragmentManager().beginTransaction()
+//                    .replace(R.id.item_detail_container, fragment)
+//                    .commit();
+//        } else {
             Intent intent = new Intent(this, FDetailActivity.class);
             intent.putExtra(FDetailFragment.ARG_ITEM_ID, id);
             startActivity(intent);
-        }
+//        }
     }
 
     @Override

@@ -24,10 +24,10 @@
     <FrameLayout
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:layout_height="match_parent">
 
         <include layout="@layout/item_list" />
+
     </FrameLayout>
 
 </android.support.design.widget.CoordinatorLayout>
