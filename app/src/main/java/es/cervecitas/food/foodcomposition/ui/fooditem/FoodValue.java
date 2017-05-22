@@ -12,7 +12,7 @@ public class FoodValue {
     @Element(name = "c_ori_name")
     private String c_ori_name;
 
-    @Element(name = "c_eng_name")
+    @Element(name = "c_eng_name", required = false)
     private String c_eng_name;
 
     @Element(name = "ALC", required = false)

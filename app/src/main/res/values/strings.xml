@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">FoodComposition</string>
     <string name="title_item_detail">Item Detail</string>
+
+    <!-- FoodPresenterImpl -->
+    <string name="c_ori_name">c_ori_name</string>
+    <string name="f_ori_name">f_ori_name</string>
+    <string name="cg_descripcion">cg_descripcion</string>
+    <string name="mu_descripcion">mu_descripcion</string>
 </resources>
