@@ -17,7 +17,7 @@
         <activity
             android:name="es.cervecitas.food.foodcomposition.ui.foodgroup.FGActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,7 +29,7 @@
             android:name="es.cervecitas.food.foodcomposition.ui.foodgroupdetail.FDetailActivity"
             android:label="@string/title_item_detail"
             android:parentActivityName="es.cervecitas.food.foodcomposition.ui.foodgroup.FGActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="es.cervecitas.food.foodcomposition.ui.foodgroupdetail.FDetailActivity" />
@@ -39,7 +39,7 @@
             android:name="es.cervecitas.food.foodcomposition.ui.fooditem.FoodItemActivity"
             android:label="Food"
             android:parentActivityName="es.cervecitas.food.foodcomposition.ui.foodgroup.FGActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme">
         </activity>
     </application>
 
