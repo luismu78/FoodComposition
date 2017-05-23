@@ -26,6 +26,7 @@ import es.cervecitas.food.foodcomposition.app.FoodCompositionApplication;
 import es.cervecitas.food.foodcomposition.network.BedcaApi;
 import es.cervecitas.food.foodcomposition.ui.foodgroupdetail.FDetailActivity;
 import es.cervecitas.food.foodcomposition.ui.foodgroupdetail.F_ListItems;
+import es.cervecitas.food.foodcomposition.ui.fooditem.FoodItemActivity;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
@@ -41,7 +42,8 @@ import io.reactivex.schedulers.Schedulers;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 
-public class FGActivity extends AppCompatActivity implements FGView, SearchView, FGAdapter.FGAdapterClickListener {
+public class FGActivity extends AppCompatActivity
+        implements FGView, SearchView, FGAdapter.FGAdapterClickListener, SearchAdapter.SearchAdapterClickListener {
 
     @Inject
     FGPresenter presenter;
@@ -264,5 +266,15 @@ public class FGActivity extends AppCompatActivity implements FGView, SearchView,
         for (es.cervecitas.food.foodcomposition.ui.foodgroupdetail.Food food : foods) {
             Log.d("HOLA", food.getF_ori_name());
         }
+
+        rvItemList.setAdapter(new SearchAdapter(this, foods, this));
+        rvItemList.getAdapter().notifyDataSetChanged();
+    }
+
+    @Override
+    public void onSearchItemClicked(final int id) {
+        Intent intent = new Intent(this, FoodItemActivity.class);
+        intent.putExtra(FoodItemActivity.ARG_FOOD_ID, id);
+        startActivity(intent);
     }
 }
