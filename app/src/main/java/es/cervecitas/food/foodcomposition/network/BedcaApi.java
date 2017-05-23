@@ -35,4 +35,8 @@ public interface BedcaApi {
     })
     @POST("/bdpub/procquery.php")
     Single<FoodItemResponse> getFoodItemDetail(@Body RequestBody bodyParams);
+
+    // Search
+    @POST("/bdpub/procquery.php")
+    Single<F_ListItems> getSearchResults(@Body RequestBody bodyParams);
 }
