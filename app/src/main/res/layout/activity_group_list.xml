@@ -21,13 +21,18 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <FrameLayout
-        android:id="@+id/frameLayout"
+    <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/rvItemList"
+        android:name="com.example.luism.foodcomposition.ItemListFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <include layout="@layout/item_list" />
-
-    </FrameLayout>
+        android:layout_height="match_parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:orientation="vertical"
+        app:layoutManager="LinearLayoutManager"
+        tools:context="com.example.luism.foodcomposition.ItemListActivity"
+        tools:listitem="@layout/item_list_content" />
 
 </android.support.design.widget.CoordinatorLayout>
