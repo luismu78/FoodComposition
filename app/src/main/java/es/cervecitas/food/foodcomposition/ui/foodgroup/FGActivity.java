@@ -6,12 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-
-import es.cervecitas.food.foodcomposition.R;
-import es.cervecitas.food.foodcomposition.app.FoodCompositionApplication;
-import es.cervecitas.food.foodcomposition.ui.foodgroupdetail.FDetailActivity;
-import es.cervecitas.food.foodcomposition.ui.foodgroupdetail.FDetailFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +14,9 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import es.cervecitas.food.foodcomposition.R;
+import es.cervecitas.food.foodcomposition.app.FoodCompositionApplication;
+import es.cervecitas.food.foodcomposition.ui.foodgroupdetail.FDetailActivity;
 
 public class FGActivity extends AppCompatActivity implements FGView, FGAdapter.FGAdapterClickListener {
 
@@ -29,11 +26,6 @@ public class FGActivity extends AppCompatActivity implements FGView, FGAdapter.F
     @BindView(R.id.rvItemList)
     RecyclerView rvItemList;
 
-//    @BindView(R.id.swipeContainer)
-//    SwipeRefreshLayout swipeRefreshLayout;
-
-    private boolean twoPane;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,14 +34,6 @@ public class FGActivity extends AppCompatActivity implements FGView, FGAdapter.F
         ((FoodCompositionApplication) getApplication()).getAppComponent().inject(this);
 
         ButterKnife.bind(this);
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.setTitle(getTitle());
-
-        if (findViewById(R.id.item_detail_container) != null) {
-            twoPane = true;
-        }
 
         rvItemList.setAdapter(new FGAdapter(this, new ArrayList<Food>(), this));
         rvItemList.setLayoutManager(new LinearLayoutManager(this));
@@ -79,20 +63,9 @@ public class FGActivity extends AppCompatActivity implements FGView, FGAdapter.F
 
     @Override
     public void onListItemClicked(int id) {
-
-        if (twoPane) {
-            Bundle args = new Bundle();
-            args.putInt(FDetailFragment.ARG_ITEM_ID, id);
-            FDetailFragment fragment = new FDetailFragment();
-            fragment.setArguments(args);
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.item_detail_container, fragment)
-                    .commit();
-        } else {
             Intent intent = new Intent(this, FDetailActivity.class);
-            intent.putExtra(FDetailFragment.ARG_ITEM_ID, id);
+            intent.putExtra(FDetailActivity.ARG_ITEM_ID, id);
             startActivity(intent);
-        }
     }
 
     @Override

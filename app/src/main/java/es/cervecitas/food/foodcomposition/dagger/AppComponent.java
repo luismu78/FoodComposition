@@ -1,15 +1,14 @@
 package es.cervecitas.food.foodcomposition.dagger;
 
-import es.cervecitas.food.foodcomposition.ui.foodgroup.FGActivity;
-import es.cervecitas.food.foodcomposition.ui.foodgroup.FGPresenterImpl;
-import es.cervecitas.food.foodcomposition.ui.foodgroupdetail.FDetailFragment;
-import es.cervecitas.food.foodcomposition.ui.foodgroupdetail.FPresenterImpl;
-import es.cervecitas.food.foodcomposition.ui.fooditem.FoodItemActivity;
-import es.cervecitas.food.foodcomposition.ui.fooditem.FoodPresenterImpl;
-
 import javax.inject.Singleton;
 
 import dagger.Component;
+import es.cervecitas.food.foodcomposition.ui.foodgroup.FGActivity;
+import es.cervecitas.food.foodcomposition.ui.foodgroup.FGPresenterImpl;
+import es.cervecitas.food.foodcomposition.ui.foodgroupdetail.FDetailActivity;
+import es.cervecitas.food.foodcomposition.ui.foodgroupdetail.FPresenterImpl;
+import es.cervecitas.food.foodcomposition.ui.fooditem.FoodItemActivity;
+import es.cervecitas.food.foodcomposition.ui.fooditem.FoodPresenterImpl;
 
 @Singleton
 @Component(
@@ -26,7 +25,7 @@ public interface AppComponent {
 
     void inject(FPresenterImpl target);
 
-    void inject(FDetailFragment target);
+    void inject(FDetailActivity target);
 
     void inject(FoodItemActivity target);
 

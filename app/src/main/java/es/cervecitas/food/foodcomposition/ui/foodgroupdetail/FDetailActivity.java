@@ -3,48 +3,100 @@ package es.cervecitas.food.foodcomposition.ui.foodgroupdetail;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.ActionBar;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.MenuItem;
 
-import es.cervecitas.food.foodcomposition.R;
-import es.cervecitas.food.foodcomposition.ui.foodgroup.FGActivity;
+import java.util.ArrayList;
+import java.util.List;
 
-public class FDetailActivity extends AppCompatActivity {
+import javax.inject.Inject;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import es.cervecitas.food.foodcomposition.R;
+import es.cervecitas.food.foodcomposition.app.FoodCompositionApplication;
+import es.cervecitas.food.foodcomposition.ui.foodgroup.FGActivity;
+import es.cervecitas.food.foodcomposition.ui.fooditem.FoodItemActivity;
+
+public class FDetailActivity extends AppCompatActivity implements FView, FAdapter.FAdapterClickListener {
+
+    public static final String ARG_ITEM_ID = "item_id";
+
+    private int id = 0;
+
+    @Inject
+    FPresenter presenter;
+
+    @BindView(R.id.rvFoodItems)
+    RecyclerView rvFoodItems;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_detail);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
-        setSupportActionBar(toolbar);
+        ((FoodCompositionApplication) getApplication()).getAppComponent().inject(this);
 
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
+        ButterKnife.bind(this);
+
+        id = getIntent().getIntExtra(ARG_ITEM_ID, 0);
+
+        CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
+        if (collapsingToolbarLayout != null) {
+            collapsingToolbarLayout.setTitle("HOLA CARABOLA");
         }
 
-        // savedInstanceState is non-null when there is fragment state
-        // saved from previous configurations of this activity
-        // (e.g. when rotating the screen from portrait to landscape).
-        // In this case, the fragment will automatically be re-added
-        // to its container so we don't need to manually add it.
-        // For more information, see the Fragments API guide at:
-        //
-        // http://developer.android.com/guide/components/fragments.html
-        //
-        if (savedInstanceState == null) {
-            // Create the detail fragment and add it to the activity
-            Bundle args = new Bundle();
-            args.putInt(FDetailFragment.ARG_ITEM_ID, getIntent().getIntExtra(FDetailFragment.ARG_ITEM_ID, 0));
-            FDetailFragment fragment = new FDetailFragment();
-            fragment.setArguments(args);
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.item_detail_container, fragment)
-                    .commit();
-        }
+        rvFoodItems = (RecyclerView) findViewById(R.id.rvFoodItems);
+        rvFoodItems.setAdapter(new FAdapter(this, new ArrayList<Food>(), this));
+        rvFoodItems.setLayoutManager(new LinearLayoutManager(this));
+        rvFoodItems.setHasFixedSize(true);
+
+        presenter.setView(this);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        presenter.getFood(id);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        presenter.cleanup();
+    }
+
+    @Override
+    public void onDataLoaded(List<Food> listItems) {
+        rvFoodItems.setAdapter(new FAdapter(this, listItems, this));
+        rvFoodItems.getAdapter().notifyDataSetChanged();
+    }
+
+    @Override
+    public void onClearData() {
+
+    }
+
+    @Override
+    public void showLoading() {
+        Log.d("HOLA", "===== LOADING ====");
+    }
+
+    @Override
+    public void hideLoading() {
+        Log.d("HOLA", "===== LOADED ====");
+    }
+
+    @Override
+    public void onListItemClicked(int id) {
+        Intent intent = new Intent(this, FoodItemActivity.class);
+        intent.putExtra(FoodItemActivity.ARG_FOOD_ID, id);
+        startActivity(intent);
     }
 
     @Override
