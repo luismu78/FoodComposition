@@ -41,7 +41,7 @@ import io.reactivex.schedulers.Schedulers;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 
-public class FGActivity extends AppCompatActivity implements FGView, FGAdapter.FGAdapterClickListener {
+public class FGActivity extends AppCompatActivity implements FGView, SearchView, FGAdapter.FGAdapterClickListener {
 
     @Inject
     FGPresenter presenter;
@@ -145,6 +145,7 @@ public class FGActivity extends AppCompatActivity implements FGView, FGAdapter.F
         rvItemList.setHasFixedSize(true);
 
         presenter.setView(this);
+        searchPresenter.setView(this);
     }
 
     @Override
@@ -258,4 +259,10 @@ public class FGActivity extends AppCompatActivity implements FGView, FGAdapter.F
 //        swipeRefreshLayout.setRefreshing(false);
     }
 
+    @Override
+    public void onSearchDataLoaded(List<es.cervecitas.food.foodcomposition.ui.foodgroupdetail.Food> foods) {
+        for (es.cervecitas.food.foodcomposition.ui.foodgroupdetail.Food food : foods) {
+            Log.d("HOLA", food.getF_ori_name());
+        }
+    }
 }

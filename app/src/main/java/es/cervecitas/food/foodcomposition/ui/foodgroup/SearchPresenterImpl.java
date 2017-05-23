@@ -21,12 +21,18 @@ public class SearchPresenterImpl implements SearchPresenter {
     @Inject
     BedcaApi bedcaApi;
 
+    private SearchView searchView;
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     public SearchPresenterImpl(Context context) {
         ((FoodCompositionApplication)context).getAppComponent().inject(this);
     }
 
+
+    @Override
+    public void setView(SearchView view) {
+        searchView = view;
+    }
 
     @Override
     public void getSearchResults(String s) {
@@ -40,11 +46,7 @@ public class SearchPresenterImpl implements SearchPresenter {
                 .subscribe(new Consumer<F_ListItems>() {
                     @Override
                     public void accept(@NonNull F_ListItems f_listItems) throws Exception {
-                        Log.d("HOLA", "Query Result: ");
-
-                        for (es.cervecitas.food.foodcomposition.ui.foodgroupdetail.Food food : f_listItems.getFoodResponse()) {
-                            Log.d("HOLA", food.getF_ori_name());
-                        }
+                        searchView.onSearchDataLoaded(f_listItems.getFoodResponse());
                     }
                 }));
     }
