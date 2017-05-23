@@ -23,23 +23,31 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import es.cervecitas.food.foodcomposition.R;
 import es.cervecitas.food.foodcomposition.app.FoodCompositionApplication;
+import es.cervecitas.food.foodcomposition.network.BedcaApi;
 import es.cervecitas.food.foodcomposition.ui.foodgroupdetail.FDetailActivity;
+import es.cervecitas.food.foodcomposition.ui.foodgroupdetail.F_ListItems;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Cancellable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.functions.Predicate;
 import io.reactivex.schedulers.Schedulers;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 
 public class FGActivity extends AppCompatActivity implements FGView, FGAdapter.FGAdapterClickListener {
 
     @Inject
     FGPresenter presenter;
+
+    @Inject
+    BedcaApi bedcaApi;
 
     @BindView(R.id.rvItemList)
     RecyclerView rvItemList;
@@ -51,6 +59,7 @@ public class FGActivity extends AppCompatActivity implements FGView, FGAdapter.F
     EditText etSearch;
 
     private Disposable searchDisposable;
+    private CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     // Observes the search button click
     private Observable<String> createSearchButtonObservable() {
@@ -169,10 +178,25 @@ public class FGActivity extends AppCompatActivity implements FGView, FGAdapter.F
                 });
     }
 
-
-
     private List<String> doTheSearch(String s) {
         Log.d("HOLA", "doTheSearch: " + s);
+
+        String QUERY = "<?xml version=\"1.0\" encoding=\"utf-8\"?><foodquery><type level=\"1\"/><selection><atribute name=\"f_id\"/><atribute name=\"f_ori_name\"/><atribute name=\"langual\"/><atribute name=\"f_eng_name\"/><atribute name=\"f_origen\"/></selection><condition><cond1><atribute1 name=\"f_ori_name\"/></cond1><relation type=\"LIKE\"/><cond3>" + s + "</cond3></condition><condition><cond1><atribute1 name=\"f_origen\"/></cond1><relation type=\"EQUAL\"/><cond3>BEDCA</cond3></condition><order ordtype=\"ASC\"><atribute3 name=\"f_eng_name\"/></order></foodquery>";
+
+        compositeDisposable.add(bedcaApi
+                .getSearchResults(RequestBody.create(MediaType.parse("text/xml"), QUERY))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<F_ListItems>() {
+                    @Override
+                    public void accept(@NonNull F_ListItems f_listItems) throws Exception {
+                        Log.d("HOLA", "Query Result: ");
+
+                        for (es.cervecitas.food.foodcomposition.ui.foodgroupdetail.Food food : f_listItems.getFoodResponse()) {
+                            Log.d("HOLA", food.getF_ori_name());
+                        }
+                    }
+                }));
 
         return new ArrayList<>();
     }
