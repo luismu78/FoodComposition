@@ -8,7 +8,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -23,9 +22,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import es.cervecitas.food.foodcomposition.R;
 import es.cervecitas.food.foodcomposition.app.FoodCompositionApplication;
-import es.cervecitas.food.foodcomposition.network.BedcaApi;
 import es.cervecitas.food.foodcomposition.ui.foodgroupdetail.FDetailActivity;
-import es.cervecitas.food.foodcomposition.ui.foodgroupdetail.F_ListItems;
 import es.cervecitas.food.foodcomposition.ui.fooditem.FoodItemActivity;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
@@ -36,11 +33,7 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Cancellable;
 import io.reactivex.functions.Consumer;
-import io.reactivex.functions.Function;
 import io.reactivex.functions.Predicate;
-import io.reactivex.schedulers.Schedulers;
-import okhttp3.MediaType;
-import okhttp3.RequestBody;
 
 public class FGActivity extends AppCompatActivity
         implements FGView, SearchView, FGAdapter.FGAdapterClickListener, SearchAdapter.SearchAdapterClickListener {
@@ -50,9 +43,6 @@ public class FGActivity extends AppCompatActivity
 
     @Inject
     SearchPresenter searchPresenter;
-
-    @Inject
-    BedcaApi bedcaApi;
 
     @BindView(R.id.rvItemList)
     RecyclerView rvItemList;
@@ -64,7 +54,6 @@ public class FGActivity extends AppCompatActivity
     EditText etSearch;
 
     private Disposable searchDisposable;
-    private CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     // Observes the search button click
     private Observable<String> createSearchButtonObservable() {
@@ -127,10 +116,10 @@ public class FGActivity extends AppCompatActivity
                 .filter(new Predicate<String>() {
                     @Override
                     public boolean test(@NonNull String s) throws Exception {
-                        return s.length() >= 2;
+                        return s.length() >= 3;
                     }
                 })
-                .debounce(1000, TimeUnit.MILLISECONDS);
+                .debounce(700, TimeUnit.MILLISECONDS);
     }
 
     @Override
@@ -167,53 +156,7 @@ public class FGActivity extends AppCompatActivity
                         searchPresenter.getSearchResults(s);
                     }
                 });
-//        searchDisposable = searchObservable
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .doOnNext(new Consumer<String>() {
-//                    @Override
-//                    public void accept(@NonNull String s) throws Exception {
-//                        showLoading();
-//                    }
-//                })
-//                .observeOn(Schedulers.io())
-//                .map(new Function<String, List<String>>() {
-//                    @Override
-//                    public List<String> apply(@NonNull String s) throws Exception {
-//                        return doTheSearch(s);
-//                    }
-//                })
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(new Consumer<List<String>>() {
-//                    @Override
-//                    public void accept(@NonNull List<String> result) throws Exception {
-//                        hideLoading();
-//                        showResult(result);
-//                    }
-//                });
     }
-
-//    private List<String> doTheSearch(String s) {
-//        Log.d("HOLA", "doTheSearch: " + s);
-//
-//        String QUERY = "<?xml version=\"1.0\" encoding=\"utf-8\"?><foodquery><type level=\"1\"/><selection><atribute name=\"f_id\"/><atribute name=\"f_ori_name\"/><atribute name=\"langual\"/><atribute name=\"f_eng_name\"/><atribute name=\"f_origen\"/></selection><condition><cond1><atribute1 name=\"f_ori_name\"/></cond1><relation type=\"LIKE\"/><cond3>" + s + "</cond3></condition><condition><cond1><atribute1 name=\"f_origen\"/></cond1><relation type=\"EQUAL\"/><cond3>BEDCA</cond3></condition><order ordtype=\"ASC\"><atribute3 name=\"f_eng_name\"/></order></foodquery>";
-//
-//        compositeDisposable.add(bedcaApi
-//                .getSearchResults(RequestBody.create(MediaType.parse("text/xml"), QUERY))
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(new Consumer<F_ListItems>() {
-//                    @Override
-//                    public void accept(@NonNull F_ListItems f_listItems) throws Exception {
-//                        Log.d("HOLA", "Query Result: ");
-//
-//                        for (es.cervecitas.food.foodcomposition.ui.foodgroupdetail.Food food : f_listItems.getFoodResponse()) {
-//                            Log.d("HOLA", food.getF_ori_name());
-//                        }
-//                    }
-//                }));
-//
-//        return new ArrayList<>();
-//    }
 
     @Override
     protected void onResume() {
@@ -247,11 +190,6 @@ public class FGActivity extends AppCompatActivity
     }
 
     @Override
-    public void onClearData() {
-
-    }
-
-    @Override
     public void showLoading() {
 //        swipeRefreshLayout.setRefreshing(true);
     }
@@ -263,10 +201,6 @@ public class FGActivity extends AppCompatActivity
 
     @Override
     public void onSearchDataLoaded(List<es.cervecitas.food.foodcomposition.ui.foodgroupdetail.Food> foods) {
-        for (es.cervecitas.food.foodcomposition.ui.foodgroupdetail.Food food : foods) {
-            Log.d("HOLA", food.getF_ori_name());
-        }
-
         rvItemList.setAdapter(new SearchAdapter(this, foods, this));
         rvItemList.getAdapter().notifyDataSetChanged();
     }
