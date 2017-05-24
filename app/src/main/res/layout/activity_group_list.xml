@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,6 +8,7 @@
     tools:context="es.cervecitas.food.foodcomposition.ui.foodgroup.FGActivity">
 
     <RelativeLayout
+        android:id="@+id/searchLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp">
@@ -42,9 +43,47 @@
         android:layout_height="match_parent"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
+        android:layout_below="@+id/searchLayout"
         android:orientation="vertical"
         app:layoutManager="LinearLayoutManager"
         tools:context="com.example.luism.foodcomposition.ItemListActivity"
         tools:listitem="@layout/item_list_content" />
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/imgNoData"
+            android:layout_width="191dp"
+            android:layout_height="191dp"
+            android:visibility="gone"
+            android:src="@mipmap/ic_launcher"/>
+
+        <TextView
+            android:id="@+id/tvEmptyView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="23sp"
+            android:textStyle="bold"
+            android:textColor="#388E3C"
+            android:visibility="gone"
+            android:gravity="center_horizontal"
+            tools:text="No Connection"/>
+
+        <TextView
+            android:id="@+id/sub_empty_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="#4CAF50"
+            android:visibility="gone"
+            android:gravity="center_horizontal"
+            tools:text="Try Later"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>
