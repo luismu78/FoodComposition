@@ -11,6 +11,8 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +31,6 @@ import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
-import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Cancellable;
 import io.reactivex.functions.Consumer;
@@ -47,11 +48,27 @@ public class FGActivity extends AppCompatActivity
     @BindView(R.id.rvItemList)
     RecyclerView rvItemList;
 
+    // Search
+
     @BindView(R.id.btnSearch)
     ImageView imgSearch;
 
     @BindView(R.id.etSearch)
     EditText etSearch;
+
+    // Error
+
+    @BindView(R.id.llNoData)
+    LinearLayout llNoData;
+
+    @BindView(R.id.imgNoData)
+    ImageView imgNoData;
+
+    @BindView(R.id.tvNoData)
+    TextView tvNoData;
+
+    @BindView(R.id.subNoData)
+    TextView subNoData;
 
     private Disposable searchDisposable;
 
@@ -137,11 +154,6 @@ public class FGActivity extends AppCompatActivity
 
         presenter.setView(this);
         searchPresenter.setView(this);
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
 
         Observable<String> searchButtonClickStream = createSearchButtonObservable();
         Observable<String> searchTextObservable = createSearchTextChangeObservable();
@@ -178,8 +190,14 @@ public class FGActivity extends AppCompatActivity
 
     @Override
     public void onDataLoaded(List<Food> listItems) {
-        rvItemList.setAdapter(new FGAdapter(this, listItems, this));
-        rvItemList.getAdapter().notifyDataSetChanged();
+        if (listItems.size() == 0) {
+            showLoadingError();
+        } else {
+            hideLoadingError();
+            rvItemList.setAdapter(new FGAdapter(this, listItems, this));
+            rvItemList.getAdapter().notifyDataSetChanged();
+        }
+
     }
 
     @Override
@@ -200,9 +218,38 @@ public class FGActivity extends AppCompatActivity
     }
 
     @Override
+    public void showLoadingError() {
+        llNoData.setVisibility(View.VISIBLE);
+        tvNoData.setText("Error leyendo del servidor");
+        subNoData.setText("Inténtelo mas tarde");
+    }
+
+    @Override
+    public void hideLoadingError() {
+        llNoData.setVisibility(View.GONE);
+    }
+
+    @Override
     public void onSearchDataLoaded(List<es.cervecitas.food.foodcomposition.ui.foodgroupdetail.Food> foods) {
-        rvItemList.setAdapter(new SearchAdapter(this, foods, this));
-        rvItemList.getAdapter().notifyDataSetChanged();
+        if (foods.size() == 0) {
+            showSearchError();
+        } else {
+            hideSearchError();
+            rvItemList.setAdapter(new SearchAdapter(this, foods, this));
+            rvItemList.getAdapter().notifyDataSetChanged();
+        }
+    }
+
+    @Override
+    public void showSearchError() {
+        llNoData.setVisibility(View.VISIBLE);
+        tvNoData.setText("No hay resultados");
+        subNoData.setText("");
+    }
+
+    @Override
+    public void hideSearchError() {
+        llNoData.setVisibility(View.GONE);
     }
 
     @Override
