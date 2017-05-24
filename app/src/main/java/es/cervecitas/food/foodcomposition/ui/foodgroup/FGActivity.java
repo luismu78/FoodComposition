@@ -154,6 +154,11 @@ public class FGActivity extends AppCompatActivity
 
         presenter.setView(this);
         searchPresenter.setView(this);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
 
         Observable<String> searchButtonClickStream = createSearchButtonObservable();
         Observable<String> searchTextObservable = createSearchTextChangeObservable();
