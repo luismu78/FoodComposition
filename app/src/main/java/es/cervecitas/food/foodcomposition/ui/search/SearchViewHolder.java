@@ -1,4 +1,4 @@
-package es.cervecitas.food.foodcomposition.ui.foodgroup;
+package es.cervecitas.food.foodcomposition.ui.search;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -22,7 +22,7 @@ class SearchViewHolder extends RecyclerView.ViewHolder {
         return tvId;
     }
 
-    TextView getTvName() {
+    public TextView getTvName() {
         return tvName;
     }
 }

@@ -1,4 +1,4 @@
-package es.cervecitas.food.foodcomposition.ui.foodgroup;
+package es.cervecitas.food.foodcomposition.ui.search;
 
 public interface SearchPresenter {
 

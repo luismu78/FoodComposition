@@ -4,8 +4,8 @@ import android.content.Context;
 
 import es.cervecitas.food.foodcomposition.ui.foodgroup.FGPresenter;
 import es.cervecitas.food.foodcomposition.ui.foodgroup.FGPresenterImpl;
-import es.cervecitas.food.foodcomposition.ui.foodgroup.SearchPresenter;
-import es.cervecitas.food.foodcomposition.ui.foodgroup.SearchPresenterImpl;
+import es.cervecitas.food.foodcomposition.ui.search.SearchPresenter;
+import es.cervecitas.food.foodcomposition.ui.search.SearchPresenterImpl;
 import es.cervecitas.food.foodcomposition.ui.foodgroupdetail.FPresenter;
 import es.cervecitas.food.foodcomposition.ui.foodgroupdetail.FPresenterImpl;
 import es.cervecitas.food.foodcomposition.ui.fooditem.FoodPresenter;
