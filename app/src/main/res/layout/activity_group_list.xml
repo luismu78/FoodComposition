@@ -7,6 +7,22 @@
     android:orientation="vertical"
     tools:context="es.cervecitas.food.foodcomposition.ui.foodgroup.FGActivity">
 
+    <LinearLayout
+        android:layout_width="0px"
+        android:layout_height="0px"
+        android:focusable="true"
+        android:focusableInTouchMode="true" />
+
+    <EditText
+
+        android:id="@+id/et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:drawablePadding="8dp"
+        android:nextFocusLeft="@id/et"
+        android:nextFocusUp="@id/et" />
+
     <RelativeLayout
         android:id="@+id/searchLayout"
         android:layout_width="match_parent"
@@ -17,20 +33,20 @@
             android:id="@+id/btnSearch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
-            android:src="@drawable/ic_search_black"/>
+            android:layout_margin="8dp"
+            android:src="@drawable/ic_search_black" />
 
         <EditText
             android:id="@+id/etSearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"
-            android:lines="1"
             android:layout_alignParentStart="true"
             android:layout_marginStart="8dp"
-            android:hint="@string/search_hint" />
+            android:hint="@string/search_hint"
+            android:inputType="text"
+            android:lines="1" />
 
     </RelativeLayout>
 
@@ -41,9 +57,9 @@
         android:name="com.example.luism.foodcomposition.ItemListFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/searchLayout"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_below="@+id/searchLayout"
         android:orientation="vertical"
         app:layoutManager="LinearLayoutManager"
         tools:context="com.example.luism.foodcomposition.ItemListActivity"
@@ -54,33 +70,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:visibility="gone"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <ImageView
             android:id="@+id/imgNoData"
-            android:layout_width="191dp"
-            android:layout_height="191dp"
-            android:src="@mipmap/ic_launcher"/>
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@mipmap/ic_launcher" />
 
         <TextView
             android:id="@+id/tvNoData"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textColor="#388E3C"
             android:textSize="23sp"
             android:textStyle="bold"
-            android:textColor="#388E3C"
-            android:gravity="center_horizontal"
-            tools:text="No Connection"/>
+            tools:text="No Connection" />
 
         <TextView
             android:id="@+id/subNoData"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:textColor="#4CAF50"
             android:gravity="center_horizontal"
-            tools:text="Try Later"/>
+            android:textColor="#4CAF50"
+            android:textSize="16sp"
+            tools:text="Try Later" />
 
     </LinearLayout>
 

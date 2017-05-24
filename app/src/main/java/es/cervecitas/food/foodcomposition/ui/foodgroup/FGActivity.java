@@ -24,6 +24,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import es.cervecitas.food.foodcomposition.R;
 import es.cervecitas.food.foodcomposition.app.FoodCompositionApplication;
+import es.cervecitas.food.foodcomposition.app.Utils;
 import es.cervecitas.food.foodcomposition.ui.foodgroupdetail.FDetailActivity;
 import es.cervecitas.food.foodcomposition.ui.fooditem.FoodItemActivity;
 import io.reactivex.Observable;
@@ -180,6 +181,8 @@ public class FGActivity extends AppCompatActivity
         super.onResume();
 
         presenter.getFoodGroups();
+
+        Utils.hideKeyboard(this, etSearch.getWindowToken());
     }
 
     @Override
