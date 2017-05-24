@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="es.cervecitas.food.foodcomposition">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name="es.cervecitas.food.foodcomposition.app.FoodCompositionApplication"
@@ -39,8 +39,7 @@
             android:name="es.cervecitas.food.foodcomposition.ui.fooditem.FoodItemActivity"
             android:label="Food"
             android:parentActivityName="es.cervecitas.food.foodcomposition.ui.foodgroup.FGActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

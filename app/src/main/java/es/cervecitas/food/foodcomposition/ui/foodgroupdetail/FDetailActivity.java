@@ -45,10 +45,10 @@ public class FDetailActivity extends AppCompatActivity implements FView, FAdapte
 
         id = getIntent().getIntExtra(ARG_ITEM_ID, 0);
 
-        CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
-        if (collapsingToolbarLayout != null) {
-            collapsingToolbarLayout.setTitle("HOLA CARABOLA");
-        }
+//        CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
+//        if (collapsingToolbarLayout != null) {
+//            collapsingToolbarLayout.setTitle("HOLA CARABOLA");
+//        }
 
         rvFoodItems = (RecyclerView) findViewById(R.id.rvFoodItems);
         rvFoodItems.setAdapter(new FAdapter(this, new ArrayList<Food>(), this));
