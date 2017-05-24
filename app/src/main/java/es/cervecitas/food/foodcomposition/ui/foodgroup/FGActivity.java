@@ -197,6 +197,8 @@ public class FGActivity extends AppCompatActivity
     public void onDataLoaded(List<Food> listItems) {
         if (listItems.size() == 0) {
             showLoadingError();
+            rvItemList.setAdapter(new FGAdapter(this, new ArrayList<Food>(), this));
+            rvItemList.getAdapter().notifyDataSetChanged();
         } else {
             hideLoadingError();
             rvItemList.setAdapter(new FGAdapter(this, listItems, this));
@@ -238,6 +240,8 @@ public class FGActivity extends AppCompatActivity
     public void onSearchDataLoaded(List<es.cervecitas.food.foodcomposition.ui.foodgroupdetail.Food> foods) {
         if (foods.size() == 0) {
             showSearchError();
+            rvItemList.setAdapter(new SearchAdapter(this, new ArrayList<es.cervecitas.food.foodcomposition.ui.foodgroupdetail.Food>(), this));
+            rvItemList.getAdapter().notifyDataSetChanged();
         } else {
             hideSearchError();
             rvItemList.setAdapter(new SearchAdapter(this, foods, this));
