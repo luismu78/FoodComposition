@@ -2,7 +2,6 @@ package es.cervecitas.food.foodcomposition.ui.principal;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -12,6 +11,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import es.cervecitas.food.foodcomposition.R;
 import es.cervecitas.food.foodcomposition.ui.foodgroup.FGActivity;
+import es.cervecitas.food.foodcomposition.ui.search.SearchActivity;
 
 public class PrincipalActivity extends AppCompatActivity {
 
@@ -47,6 +47,15 @@ public class PrincipalActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(PrincipalActivity.this, FGActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        tvNutrientes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PrincipalActivity.this, SearchActivity.class);
                 startActivity(intent);
                 finish();
             }
