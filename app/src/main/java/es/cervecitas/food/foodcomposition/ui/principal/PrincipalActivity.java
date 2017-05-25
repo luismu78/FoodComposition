@@ -48,7 +48,6 @@ public class PrincipalActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(PrincipalActivity.this, FGActivity.class);
                 startActivity(intent);
-                finish();
             }
         });
 
@@ -57,7 +56,6 @@ public class PrincipalActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(PrincipalActivity.this, SearchActivity.class);
                 startActivity(intent);
-                finish();
             }
         });
     }
