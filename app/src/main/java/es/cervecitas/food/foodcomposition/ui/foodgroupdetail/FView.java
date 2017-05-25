@@ -13,4 +13,8 @@ public interface FView extends BaseView {
     void showLoading();
 
     void hideLoading();
+
+    void showLoadingError();
+
+    void hideLoadingError();
 }
