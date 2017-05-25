@@ -7,6 +7,7 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/tvNutrientes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -18,9 +19,10 @@
         android:fontFamily="sans-serif-medium"
         android:gravity="center_vertical"
         android:textSize="27sp"
-        tools:text="Nutrientes" />
+        android:text="Nutrientes" />
 
     <TextView
+        android:id="@+id/tvGrupos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -32,9 +34,10 @@
         android:fontFamily="sans-serif-medium"
         android:gravity="center_vertical"
         android:textSize="27sp"
-        tools:text="Grupos" />
+        android:text="Grupos" />
 
     <TextView
+        android:id="@+id/tvAlimentos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -46,6 +49,6 @@
         android:fontFamily="sans-serif-medium"
         android:gravity="center_vertical"
         android:textSize="27sp"
-        tools:text="Alimentos" />
+        android:text="Alimentos" />
 
 </LinearLayout>
