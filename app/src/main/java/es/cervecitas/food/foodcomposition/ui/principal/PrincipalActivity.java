@@ -15,8 +15,8 @@ import es.cervecitas.food.foodcomposition.ui.search.SearchActivity;
 
 public class PrincipalActivity extends AppCompatActivity {
 
-    @BindView(R.id.tvNutrientes)
-    TextView tvNutrientes;
+//    @BindView(R.id.tvNutrientes)
+//    TextView tvNutrientes;
 
     @BindView(R.id.tvGrupos)
     TextView tvGrupos;
@@ -51,7 +51,7 @@ public class PrincipalActivity extends AppCompatActivity {
             }
         });
 
-        tvNutrientes.setOnClickListener(new View.OnClickListener() {
+        tvAlimentos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(PrincipalActivity.this, SearchActivity.class);
