@@ -27,12 +27,14 @@
 
         <activity android:name=".ui.search.SearchActivity"
             android:label="Search"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"
+            android:parentActivityName=".ui.principal.PrincipalActivity"/>
 
         <activity
             android:name=".ui.foodgroup.FGActivity"
             android:label="FoodComposition"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"
+            android:parentActivityName=".ui.principal.PrincipalActivity"/>
 
         <activity
             android:name="es.cervecitas.food.foodcomposition.ui.foodgroupdetail.FDetailActivity"
@@ -47,7 +49,6 @@
         <activity
             android:name="es.cervecitas.food.foodcomposition.ui.fooditem.FoodItemActivity"
             android:label="Food"
-            android:parentActivityName="es.cervecitas.food.foodcomposition.ui.foodgroup.FGActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
