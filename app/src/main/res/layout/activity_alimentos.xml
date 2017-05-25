@@ -4,22 +4,55 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <EditText
-        android:id="@+id/tvSearch"
+    <RelativeLayout
+        android:id="@+id/searchLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_marginEnd="24dp"
         android:layout_marginStart="24dp"
-        android:drawableEnd="@drawable/ic_search_black"
-        android:drawablePadding="8dp"
-        android:hint="Nombre del alimento" />
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <ImageView
+            android:id="@+id/btnSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_margin="8dp"
+            android:src="@drawable/ic_search_black" />
+
+        <EditText
+            android:id="@+id/etSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="8dp"
+            android:hint="@string/search_hint"
+            android:inputType="text"
+            android:lines="1"
+            android:nextFocusLeft="@id/searchLayout"
+            android:nextFocusUp="@id/searchLayout"/>
+
+    </RelativeLayout>
+
+    <!--<EditText-->
+        <!--android:id="@+id/tvSearch"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--android:layout_marginEnd="24dp"-->
+        <!--android:layout_marginStart="24dp"-->
+        <!--android:drawableEnd="@drawable/ic_search_black"-->
+        <!--android:drawablePadding="8dp"-->
+        <!--android:hint="Nombre del alimento" />-->
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvAlimentos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/tvSearch"
+        android:layout_below="@+id/searchLayout"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginTop="8dp"
