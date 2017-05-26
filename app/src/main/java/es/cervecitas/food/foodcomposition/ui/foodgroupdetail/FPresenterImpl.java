@@ -53,5 +53,6 @@ public class FPresenterImpl implements FPresenter {
     @Override
     public void cleanup() {
         compositeDisposable.clear();
+        view = null;
     }
 }

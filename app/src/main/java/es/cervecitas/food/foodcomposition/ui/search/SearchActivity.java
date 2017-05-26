@@ -147,12 +147,14 @@ public class SearchActivity extends AppCompatActivity implements SearchView, Sea
         rvAlimentos.setLayoutManager(new LinearLayoutManager(this));
         rvAlimentos.setHasFixedSize(false);
 
-        presenter.setView(this);
+
     }
 
     @Override
     protected void onStart() {
         super.onStart();
+
+        presenter.setView(this);
 
         Observable<String> searchButtonClickStream = createSearchButtonObservable();
         Observable<String> searchTextObservable = createSearchTextChangeObservable();

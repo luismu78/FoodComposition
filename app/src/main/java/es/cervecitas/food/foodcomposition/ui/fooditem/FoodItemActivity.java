@@ -48,6 +48,11 @@ public class FoodItemActivity extends AppCompatActivity implements FoodView {
         rvItemList.setAdapter(new FoodAdapter(new ArrayList<FoodValue>(), this));
         rvItemList.setLayoutManager(new LinearLayoutManager(this));
         rvItemList.setHasFixedSize(true);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
 
         presenter.setView(this);
     }
@@ -60,8 +65,9 @@ public class FoodItemActivity extends AppCompatActivity implements FoodView {
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    protected void onStop() {
+        super.onStop();
+
         presenter.cleanup();
     }
 

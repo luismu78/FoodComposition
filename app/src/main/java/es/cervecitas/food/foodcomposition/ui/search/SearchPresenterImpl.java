@@ -70,5 +70,6 @@ public class SearchPresenterImpl implements SearchPresenter {
     @Override
     public void cleanup() {
         compositeDisposable.clear();
+        searchView = null;
     }
 }

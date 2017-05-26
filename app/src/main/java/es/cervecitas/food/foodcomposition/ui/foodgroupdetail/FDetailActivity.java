@@ -162,14 +162,14 @@ public class FDetailActivity extends AppCompatActivity
         rvFoodItems.setAdapter(new FAdapter(this, new ArrayList<Food>(), this));
         rvFoodItems.setLayoutManager(new LinearLayoutManager(this));
         rvFoodItems.setHasFixedSize(true);
-
-        presenter.setView(this);
-        searchPresenter.setView(this);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
+
+        presenter.setView(this);
+        searchPresenter.setView(this);
 
         Observable searchButtonClickStream = createSearchButtonObservable();
         Observable searchTextObservable = createSearchTextChangeObservable();

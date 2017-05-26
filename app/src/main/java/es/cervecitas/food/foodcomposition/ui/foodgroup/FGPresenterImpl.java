@@ -68,5 +68,6 @@ public class FGPresenterImpl implements FGPresenter {
     @Override
     public void cleanup() {
         compositeDisposable.clear();
+        view = null;
     }
 }

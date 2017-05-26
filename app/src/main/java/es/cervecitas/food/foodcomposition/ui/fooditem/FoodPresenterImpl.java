@@ -59,6 +59,7 @@ public class FoodPresenterImpl implements FoodPresenter {
     @Override
     public void cleanup() {
         compositeDisposable.clear();
+        view = null;
     }
 
     private String getHeaders() {

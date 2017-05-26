@@ -57,6 +57,11 @@ public class FGActivity extends AppCompatActivity
         rvItemList.setAdapter(new FGAdapter(this, new ArrayList<Food>(), this));
         rvItemList.setLayoutManager(new LinearLayoutManager(this));
         rvItemList.setHasFixedSize(true);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
 
         presenter.setView(this);
     }
