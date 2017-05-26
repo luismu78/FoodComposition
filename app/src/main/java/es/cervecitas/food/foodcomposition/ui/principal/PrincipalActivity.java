@@ -11,12 +11,13 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import es.cervecitas.food.foodcomposition.R;
 import es.cervecitas.food.foodcomposition.ui.foodgroup.FGActivity;
+import es.cervecitas.food.foodcomposition.ui.nutrientes.NutrientesActivity;
 import es.cervecitas.food.foodcomposition.ui.search.SearchActivity;
 
 public class PrincipalActivity extends AppCompatActivity {
 
-//    @BindView(R.id.tvNutrientes)
-//    TextView tvNutrientes;
+    @BindView(R.id.tvNutrientes)
+    TextView tvNutrientes;
 
     @BindView(R.id.tvGrupos)
     TextView tvGrupos;
@@ -36,12 +37,13 @@ public class PrincipalActivity extends AppCompatActivity {
 
     private void manageClicks() {
 
-//        tvNutrientes.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent i = new Intent(this, )
-//            }
-//        });
+        tvNutrientes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PrincipalActivity.this, NutrientesActivity.class);
+                startActivity(intent);
+            }
+        });
 
         tvGrupos.setOnClickListener(new View.OnClickListener() {
             @Override

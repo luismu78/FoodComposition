@@ -37,6 +37,12 @@
             android:parentActivityName=".ui.principal.PrincipalActivity"/>
 
         <activity
+            android:name=".ui.nutrientes.NutrientesActivity"
+            android:label="Nutrientes"
+            android:theme="@style/AppTheme"
+            android:parentActivityName=".ui.principal.PrincipalActivity" />
+
+        <activity
             android:name="es.cervecitas.food.foodcomposition.ui.foodgroupdetail.FDetailActivity"
             android:label="@string/title_item_detail"
             android:parentActivityName="es.cervecitas.food.foodcomposition.ui.foodgroup.FGActivity"
