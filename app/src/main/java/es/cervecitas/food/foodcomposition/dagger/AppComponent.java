@@ -5,6 +5,8 @@ import javax.inject.Singleton;
 import dagger.Component;
 import es.cervecitas.food.foodcomposition.ui.foodgroup.FGActivity;
 import es.cervecitas.food.foodcomposition.ui.foodgroup.FGPresenterImpl;
+import es.cervecitas.food.foodcomposition.ui.nutrientes.NutrientesActivity;
+import es.cervecitas.food.foodcomposition.ui.nutrientes.NutrientsPresenterImpl;
 import es.cervecitas.food.foodcomposition.ui.search.SearchActivity;
 import es.cervecitas.food.foodcomposition.ui.search.SearchPresenterImpl;
 import es.cervecitas.food.foodcomposition.ui.foodgroupdetail.FDetailActivity;
@@ -36,4 +38,8 @@ public interface AppComponent {
     void inject(SearchPresenterImpl target);
 
     void inject(SearchActivity target);
+
+    void inject(NutrientsPresenterImpl target);
+
+    void inject(NutrientesActivity target);
 }

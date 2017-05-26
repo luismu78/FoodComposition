@@ -54,6 +54,7 @@ public class FDetailActivity extends AppCompatActivity
 
     @Inject
     SearchPresenter searchPresenter;
+    //TODO: remove searchPresenter
 
     @BindView(R.id.rvFoodItems)
     RecyclerView rvFoodItems;

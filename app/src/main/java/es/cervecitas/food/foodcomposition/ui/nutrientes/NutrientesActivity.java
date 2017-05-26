@@ -4,14 +4,74 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-import es.cervecitas.food.foodcomposition.R;
+import java.util.List;
 
-public class NutrientesActivity extends Activity {
+import javax.inject.Inject;
+
+import butterknife.ButterKnife;
+import es.cervecitas.food.foodcomposition.R;
+import es.cervecitas.food.foodcomposition.app.FoodCompositionApplication;
+import es.cervecitas.food.foodcomposition.ui.foodgroupdetail.Food;
+
+public class NutrientesActivity extends Activity implements NutrientesView {
+
+    @Inject
+    NutrientesPresenter nutrientsPresenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nutriente);
+
+        ((FoodCompositionApplication)getApplication()).getAppComponent().inject(this);
+
+        ButterKnife.bind(this);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        nutrientsPresenter.setView(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        nutrientsPresenter.getFoods(409);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        nutrientsPresenter.cleanup();
+    }
+
+    @Override
+    public void onDataLoaded(List<Food> FoodItems) {
+
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
+
+    @Override
+    public void showLoadingError() {
+
+    }
+
+    @Override
+    public void hideLoadingError() {
+
     }
 
     /**

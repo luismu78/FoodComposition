@@ -1,6 +1,7 @@
 package es.cervecitas.food.foodcomposition.ui.foodgroupdetail;
 
 import org.simpleframework.xml.Element;
+import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
 @Root(name = "food", strict = false)
@@ -23,6 +24,15 @@ public class Food {
 
     @Element(name = "edible_portion", required = false)
     private String edible_portion;
+
+    @Element(name = "c_ori_name", required = false)
+    private String c_ori_name;
+
+    @Element(name = "best_location", required = false)
+    private String best_location;
+
+    @Element(name = "v_unit", required = false)
+    private String v_unit;
 
     public Food() {
     }
@@ -51,4 +61,15 @@ public class Food {
         return edible_portion;
     }
 
+    public String getC_ori_name() {
+        return c_ori_name;
+    }
+
+    public String getBest_location() {
+        return best_location;
+    }
+
+    public String getV_unit() {
+        return v_unit;
+    }
 }

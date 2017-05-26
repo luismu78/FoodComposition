@@ -4,6 +4,8 @@ import android.content.Context;
 
 import es.cervecitas.food.foodcomposition.ui.foodgroup.FGPresenter;
 import es.cervecitas.food.foodcomposition.ui.foodgroup.FGPresenterImpl;
+import es.cervecitas.food.foodcomposition.ui.nutrientes.NutrientesPresenter;
+import es.cervecitas.food.foodcomposition.ui.nutrientes.NutrientsPresenterImpl;
 import es.cervecitas.food.foodcomposition.ui.search.SearchPresenter;
 import es.cervecitas.food.foodcomposition.ui.search.SearchPresenterImpl;
 import es.cervecitas.food.foodcomposition.ui.foodgroupdetail.FPresenter;
@@ -42,4 +44,11 @@ public class PresenterModule {
     SearchPresenter provideSearchPresenter(Context context) {
         return new SearchPresenterImpl(context);
     }
+
+    @Provides
+    @Singleton
+    NutrientesPresenter provideNutrientesPresenter(Context context) {
+        return new NutrientsPresenterImpl(context);
+    }
+
 }
