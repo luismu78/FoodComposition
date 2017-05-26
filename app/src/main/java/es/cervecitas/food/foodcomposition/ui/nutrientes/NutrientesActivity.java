@@ -39,7 +39,8 @@ public class NutrientesActivity extends Activity implements NutrientesView {
     protected void onResume() {
         super.onResume();
 
-        nutrientsPresenter.getFoods(409);
+//        nutrientsPresenter.getFoods(409);
+        nutrientsPresenter.getFilterList();
     }
 
     @Override

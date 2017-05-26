@@ -35,6 +35,35 @@ public class NutrientsPresenterImpl implements NutrientesPresenter {
     }
 
     @Override
+    public void getFilterList() {
+//        view.showLoading();
+
+        String condition1 =
+                "<condition>" +
+                "<cond1><atribute1 name=\"publico\"/></cond1>" +
+                "<relation type=\"EQUAL\"/>" +
+                "<cond3>1</cond3>" +
+                "</condition>";
+
+        String query = getHeaders() + "<foodquery>" + getQueryType3h() + getSelectionFilter() + condition1 + getFilterOrder() + "</foodquery>";
+
+        bedcaApi
+                .getNutrientNames(RequestBody.create(MediaType.parse("text/xml"), query))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<BedcaResponse>() {
+                    @Override
+                    public void accept(@NonNull BedcaResponse bedcaResponse) throws Exception {
+                        Log.d("HOLA", "bedcaResponse.getFoodResponse().size(): " + bedcaResponse.getFoodResponse().size());
+                        for (Nutrient nutrient : bedcaResponse.getFoodResponse()) {
+                            Log.d("HOLA", "id: " + nutrient.getC_id() + " - " + nutrient.getC_ori_name());
+                        }
+                        Log.d("HOLA", "----------------------------------------");
+                    }
+                });
+    }
+
+    @Override
     public void getFoods(int filter) {
 //        view.showLoading();
 
@@ -52,7 +81,7 @@ public class NutrientsPresenterImpl implements NutrientesPresenter {
                 "<cond3>BEDCA</cond3>" +
                 "</condition>";
 
-        String query = getHeaders() + "<foodquery>" + getQueryType() + getSelection() + condition1 + condition2 + getOrder() + "</foodquery>";
+        String query = getHeaders() + "<foodquery>" + getQueryType1a() + getSelectionFoods() + condition1 + condition2 + getOrderFoods() + "</foodquery>";
 
         bedcaApi
                 .getByNutrient(RequestBody.create(MediaType.parse("text/xml"), query))
@@ -66,6 +95,7 @@ public class NutrientsPresenterImpl implements NutrientesPresenter {
                             Log.d("HOLA", "name: " + food.getF_ori_name());
                             Log.d("HOLA", food.getC_ori_name() + " " + food.getBest_location() + food.getV_unit());
                         }
+                        Log.d("HOLA", "----------------------------------------");
                     }
                 });
     }
@@ -79,11 +109,15 @@ public class NutrientsPresenterImpl implements NutrientesPresenter {
         return "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
     }
 
-    private String getQueryType() {
+    private String getQueryType1a() {
         return "<type level=\"1a\"/>";
     }
 
-    private String getSelection() {
+    private String getQueryType3h() {
+        return "<type level=\"3h\"/>";
+    }
+
+    private String getSelectionFoods() {
         return "<selection>" +
                 "<atribute name=\"f_id\"/>" +
                 "<atribute name=\"f_ori_name\"/>" +
@@ -93,9 +127,24 @@ public class NutrientsPresenterImpl implements NutrientesPresenter {
                 "</selection>";
     }
 
-    private String getOrder() {
+    private String getSelectionFilter() {
+        return "<selection>" +
+                "<atribute name=\"cg_id\"/>" +
+                "<atribute name=\"c_id\"/>" +
+                "<atribute name=\"c_ori_name\"/>" +
+//                "<atribute name=\"glos_esp\"/>" +
+                "</selection>";
+    }
+
+    private String getOrderFoods() {
         return "<order ordtype=\"DESC\">" +
                 "<atribute3 name=\"best_location\"/>" +
+                "</order>";
+    }
+
+    private String getFilterOrder() {
+        return "<order ordtype=\"ASC\">" +
+                "<atribute3 name=\"c_id\"/>" +
                 "</order>";
     }
 }

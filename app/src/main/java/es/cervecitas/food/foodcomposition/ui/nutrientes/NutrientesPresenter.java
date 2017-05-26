@@ -4,6 +4,8 @@ public interface NutrientesPresenter {
 
     void setView(NutrientesView view);
 
+    void getFilterList();
+
     void getFoods(int filter);
 
     void cleanup();
