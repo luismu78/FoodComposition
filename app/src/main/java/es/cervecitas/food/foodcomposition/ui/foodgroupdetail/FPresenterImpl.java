@@ -36,8 +36,23 @@ public class FPresenterImpl implements FPresenter {
     public void getFood(int id) {
         view.showLoading();
 
+        String condition1 =
+                "<condition>" +
+                "<cond1><atribute1 name=\"foodgroup_id\"/></cond1>" +
+                "<relation type=\"EQUAL\"/>" +
+                "<cond3>" + id + "</cond3>" +
+                "</condition>";
+        String condition2 =
+                "<condition>" +
+                "<cond1><atribute1 name=\"f_origen\"/></cond1>" +
+                "<relation type=\"EQUAL\"/>" +
+                "<cond3>BEDCA</cond3>" +
+                "</condition>";
+
+        String query = getHeaders() + "<foodquery>" + getQueryType() + getSelection() + condition1 + condition2 + getOrder() + "</foodquery>";
+
         bedcaApi
-                .getFoodGroupDetail(RequestBody.create(MediaType.parse("text/xml"), "<?xml version=\"1.0\" encoding=\"utf-8\"?><foodquery><type level=\"1\"/><selection><atribute name=\"f_id\"/><atribute name=\"f_ori_name\"/><atribute name=\"langual\"/><atribute name=\"f_eng_name\"/><atribute name=\"f_origen\"/><atribute name=\"edible_portion\"/></selection><condition><cond1><atribute1 name=\"foodgroup_id\"/></cond1><relation type=\"EQUAL\"/><cond3>" + id + "</cond3></condition><condition><cond1><atribute1 name=\"f_origen\"/></cond1><relation type=\"EQUAL\"/><cond3>BEDCA</cond3></condition><order ordtype=\"ASC\"><atribute3 name=\"f_ori_name\"/></order></foodquery>"))
+                .getFoodGroupDetail(RequestBody.create(MediaType.parse("text/xml"), query))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<F_ListItems>() {
@@ -48,6 +63,31 @@ public class FPresenterImpl implements FPresenter {
                     }
                 });
 
+    }
+
+    private String getHeaders() {
+        return "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
+    }
+
+    private String getQueryType() {
+        return "<type level=\"1\"/>";
+    }
+
+    private String getSelection() {
+        return "<selection>" +
+                "<atribute name=\"f_id\"/>" +
+                "<atribute name=\"f_ori_name\"/>" +
+                "<atribute name=\"langual\"/>" +
+                "<atribute name=\"f_eng_name\"/>" +
+                "<atribute name=\"f_origen\"/>" +
+                "<atribute name=\"edible_portion\"/>" +
+                "</selection>";
+    }
+
+    private String getOrder() {
+        return "<order ordtype=\"ASC\">" +
+                "<atribute3 name=\"f_ori_name\"/>" +
+                "</order>";
     }
 
     @Override

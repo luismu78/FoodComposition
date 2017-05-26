@@ -41,7 +41,14 @@ public class SearchPresenterImpl implements SearchPresenter {
     @Override
     public void getSearchResults(String s) {
 
-        String QUERY = "<?xml version=\"1.0\" encoding=\"utf-8\"?><foodquery><type level=\"1\"/><selection><atribute name=\"f_id\"/><atribute name=\"f_ori_name\"/><atribute name=\"langual\"/><atribute name=\"f_eng_name\"/><atribute name=\"f_origen\"/></selection><condition><cond1><atribute1 name=\"f_ori_name\"/></cond1><relation type=\"LIKE\"/><cond3>" + s + "</cond3></condition><condition><cond1><atribute1 name=\"f_origen\"/></cond1><relation type=\"EQUAL\"/><cond3>BEDCA</cond3></condition><order ordtype=\"ASC\"><atribute3 name=\"f_eng_name\"/></order></foodquery>";
+        String condition1 =
+                "<condition>" +
+                "<cond1><atribute1 name=\"f_ori_name\"/></cond1>" +
+                "<relation type=\"LIKE\"/>" +
+                "<cond3>" + s + "</cond3>" +
+                "</condition>";
+
+        String QUERY = getHeaders() + "<foodquery>" + getQueryType() + getSelection() + condition1 + getOrigen() + getOrder() + "</foodquery>";
 
         compositeDisposable.add(bedcaApi
                 .getSearchResults(RequestBody.create(MediaType.parse("text/xml"), QUERY))
@@ -65,6 +72,37 @@ public class SearchPresenterImpl implements SearchPresenter {
                         searchView.onSearchDataLoaded(foodList);
                     }
                 }));
+    }
+
+    private String getHeaders() {
+        return "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
+    }
+
+    private String getQueryType() {
+        return "<type level=\"1\"/>";
+    }
+
+    private String getSelection() {
+        return "<selection>" +
+                "<atribute name=\"f_id\"/>" +
+                "<atribute name=\"f_ori_name\"/>" +
+                "<atribute name=\"langual\"/>" +
+                "<atribute name=\"f_eng_name\"/>" +
+                "<atribute name=\"f_origen\"/>" +
+                "</selection>";
+    }
+
+    private String getOrigen() {
+        return "<condition>" +
+                "<cond1><atribute1 name=\"f_origen\"/></cond1>" +
+                "<relation type=\"EQUAL\"/>" +
+                "<cond3>BEDCA</cond3></condition>";
+    }
+
+    private String getOrder() {
+        return "<order ordtype=\"ASC\">" +
+                "<atribute3 name=\"f_eng_name\"/>" +
+                "</order>";
     }
 
     @Override

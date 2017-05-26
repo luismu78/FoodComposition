@@ -40,8 +40,10 @@ public class FGPresenterImpl implements FGPresenter {
     public void getFoodGroups() {
         view.showLoading();
 
+        String query = getHeaders() + "<foodquery>" + getQueryType() + getSelection() + getOrder() + "</foodquery>";
+
         compositeDisposable.add(bedcaApi
-                .getFoodGroups(RequestBody.create(MediaType.parse("text/xml"), "<?xml version=\"1.0\" encoding=\"utf-8\"?><foodquery><type level=\"3\"/><selection><atribute name=\"fg_id\"/><atribute name=\"fg_ori_name\"/><atribute name=\"fg_eng_name\"/></selection><order ordtype=\"ASC\"><atribute3 name=\"fg_id\"/></order></foodquery>"))
+                .getFoodGroups(RequestBody.create(MediaType.parse("text/xml"), query))
                 .subscribeOn(Schedulers.io())
                 .onErrorReturn(new Function<Throwable, FG_ListItems>() {
                     @Override
@@ -63,6 +65,28 @@ public class FGPresenterImpl implements FGPresenter {
                         view.hideLoading();
                     }
                 }));
+    }
+
+    private String getHeaders() {
+        return "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
+    }
+
+    private String getQueryType() {
+        return "<type level=\"3\"/>";
+    }
+
+    private String getSelection() {
+        return "<selection>" +
+                "<atribute name=\"fg_id\"/>" +
+                "<atribute name=\"fg_ori_name\"/>" +
+                "<atribute name=\"fg_eng_name\"/>" +
+                "</selection>";
+    }
+
+    private String getOrder() {
+        return "<order ordtype=\"ASC\">" +
+                "<atribute3 name=\"fg_id\"/>" +
+                "</order>";
     }
 
     @Override

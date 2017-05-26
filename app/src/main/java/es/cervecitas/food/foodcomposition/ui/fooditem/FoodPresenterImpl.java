@@ -82,11 +82,11 @@ public class FoodPresenterImpl implements FoodPresenter {
     private String getProjection(int id) {
         return
                 "<condition>" +
-                        "<cond1><atribute1 name=\"f_id\"/></cond1><relation type=\"EQUAL\"/><cond3>" + id + "</cond3>" +
-                        "</condition>" +
-                        "<condition>" +
-                        "<cond1><atribute1 name=\"publico\"/></cond1><relation type=\"EQUAL\"/><cond3>1</cond3>" +
-                        "</condition>";
+                "<cond1><atribute1 name=\"f_id\"/></cond1><relation type=\"EQUAL\"/><cond3>" + id + "</cond3>" +
+                "</condition>" +
+                "<condition>" +
+                "<cond1><atribute1 name=\"publico\"/></cond1><relation type=\"EQUAL\"/><cond3>1</cond3>" +
+                "</condition>";
     }
 
     private String getOrderBy() {
