@@ -77,10 +77,7 @@ public class FPresenterImpl implements FPresenter {
         return "<selection>" +
                 "<atribute name=\"f_id\"/>" +
                 "<atribute name=\"f_ori_name\"/>" +
-                "<atribute name=\"langual\"/>" +
-                "<atribute name=\"f_eng_name\"/>" +
                 "<atribute name=\"f_origen\"/>" +
-                "<atribute name=\"edible_portion\"/>" +
                 "</selection>";
     }
 

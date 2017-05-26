@@ -79,7 +79,6 @@ public class FGPresenterImpl implements FGPresenter {
         return "<selection>" +
                 "<atribute name=\"fg_id\"/>" +
                 "<atribute name=\"fg_ori_name\"/>" +
-                "<atribute name=\"fg_eng_name\"/>" +
                 "</selection>";
     }
 

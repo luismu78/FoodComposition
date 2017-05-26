@@ -86,8 +86,6 @@ public class SearchPresenterImpl implements SearchPresenter {
         return "<selection>" +
                 "<atribute name=\"f_id\"/>" +
                 "<atribute name=\"f_ori_name\"/>" +
-                "<atribute name=\"langual\"/>" +
-                "<atribute name=\"f_eng_name\"/>" +
                 "<atribute name=\"f_origen\"/>" +
                 "</selection>";
     }
