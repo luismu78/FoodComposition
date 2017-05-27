@@ -7,7 +7,9 @@ import es.cervecitas.food.foodcomposition.ui.foodgroupdetail.Food;
 
 public interface NutrientesView extends BaseView {
 
-    void onDataLoaded(List<Food> FoodItems);
+    void onFoodDataLoaded(List<Food> FoodItems);
+
+    void onFilterListLoaded(List<Nutrient> nutrientList);
 
     void showLoading();
 

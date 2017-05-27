@@ -36,7 +36,7 @@ public class NutrientsPresenterImpl implements NutrientesPresenter {
 
     @Override
     public void getFilterList() {
-//        view.showLoading();
+        view.showLoading();
 
         String condition1 =
                 "<condition>" +
@@ -54,11 +54,8 @@ public class NutrientsPresenterImpl implements NutrientesPresenter {
                 .subscribe(new Consumer<BedcaResponse>() {
                     @Override
                     public void accept(@NonNull BedcaResponse bedcaResponse) throws Exception {
-                        Log.d("HOLA", "bedcaResponse.getFoodResponse().size(): " + bedcaResponse.getFoodResponse().size());
-                        for (Nutrient nutrient : bedcaResponse.getFoodResponse()) {
-                            Log.d("HOLA", "id: " + nutrient.getC_id() + " - " + nutrient.getC_ori_name());
-                        }
-                        Log.d("HOLA", "----------------------------------------");
+                        view.onFilterListLoaded(bedcaResponse.getFoodResponse());
+                        view.hideLoading();
                     }
                 });
     }

@@ -3,11 +3,14 @@ package es.cervecitas.food.foodcomposition.ui.nutrientes;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import es.cervecitas.food.foodcomposition.R;
 import es.cervecitas.food.foodcomposition.app.FoodCompositionApplication;
@@ -17,6 +20,9 @@ public class NutrientesActivity extends Activity implements NutrientesView {
 
     @Inject
     NutrientesPresenter nutrientsPresenter;
+
+    @BindView(R.id.rvNutrientes)
+    RecyclerView rvNutrientes;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,8 +57,16 @@ public class NutrientesActivity extends Activity implements NutrientesView {
     }
 
     @Override
-    public void onDataLoaded(List<Food> FoodItems) {
+    public void onFoodDataLoaded(List<Food> FoodItems) {
 
+    }
+
+    @Override
+    public void onFilterListLoaded(List<Nutrient> nutrientList) {
+        Log.d("HOLA", "nutrientList.size(): " + nutrientList.size());
+        for (Nutrient nutrient : nutrientList) {
+            Log.d("HOLA", "id: " + nutrient.getC_id() + " - " + nutrient.getC_ori_name());
+        }
     }
 
     @Override
