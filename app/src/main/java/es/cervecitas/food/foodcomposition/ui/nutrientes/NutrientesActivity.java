@@ -1,6 +1,7 @@
 package es.cervecitas.food.foodcomposition.ui.nutrientes;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,6 +21,7 @@ import butterknife.ButterKnife;
 import es.cervecitas.food.foodcomposition.R;
 import es.cervecitas.food.foodcomposition.app.FoodCompositionApplication;
 import es.cervecitas.food.foodcomposition.ui.foodgroupdetail.Food;
+import es.cervecitas.food.foodcomposition.ui.nutrientdetail.NutrientDetailActivity;
 
 public class NutrientesActivity extends Activity implements NutrientesView, NutrientesAdapter.ClickListener {
 
@@ -43,7 +45,7 @@ public class NutrientesActivity extends Activity implements NutrientesView, Nutr
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nutriente);
+        setContentView(R.layout.activity_nutriente_list);
 
         ((FoodCompositionApplication)getApplication()).getAppComponent().inject(this);
 
@@ -119,6 +121,8 @@ public class NutrientesActivity extends Activity implements NutrientesView, Nutr
 
     @Override
     public void onListItemClicked(int id) {
-        Log.d("HOLA", "onListItemClicked " + id);
+        Intent intent = new Intent(this, NutrientDetailActivity.class);
+        intent.putExtra(NutrientDetailActivity.ARG_NUTRIENT_ID, id);
+        startActivity(intent);
     }
 }
