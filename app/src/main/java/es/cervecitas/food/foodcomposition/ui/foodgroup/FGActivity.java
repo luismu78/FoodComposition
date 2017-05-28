@@ -22,8 +22,7 @@ import es.cervecitas.food.foodcomposition.R;
 import es.cervecitas.food.foodcomposition.app.FoodCompositionApplication;
 import es.cervecitas.food.foodcomposition.ui.foodgroupdetail.FDetailActivity;
 
-public class FGActivity extends AppCompatActivity
-        implements FGView, FGAdapter.FGAdapterClickListener {
+public class FGActivity extends AppCompatActivity implements FGView, FGAdapter.FGAdapterClickListener {
 
     @Inject
     FGPresenter presenter;

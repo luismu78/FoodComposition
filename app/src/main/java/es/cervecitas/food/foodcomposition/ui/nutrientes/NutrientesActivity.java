@@ -3,9 +3,14 @@ package es.cervecitas.food.foodcomposition.ui.nutrientes;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -16,13 +21,24 @@ import es.cervecitas.food.foodcomposition.R;
 import es.cervecitas.food.foodcomposition.app.FoodCompositionApplication;
 import es.cervecitas.food.foodcomposition.ui.foodgroupdetail.Food;
 
-public class NutrientesActivity extends Activity implements NutrientesView {
+public class NutrientesActivity extends Activity implements NutrientesView, NutrientesAdapter.ClickListener {
 
     @Inject
     NutrientesPresenter nutrientsPresenter;
 
     @BindView(R.id.rvNutrientes)
     RecyclerView rvNutrientes;
+
+    // Error
+
+    @BindView(R.id.llNoData)
+    LinearLayout llNoData;
+
+    @BindView(R.id.imgNoData)
+    ImageView imgNoData;
+
+    @BindView(R.id.tvNoData)
+    TextView tvNoData;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,6 +48,9 @@ public class NutrientesActivity extends Activity implements NutrientesView {
         ((FoodCompositionApplication)getApplication()).getAppComponent().inject(this);
 
         ButterKnife.bind(this);
+
+        rvNutrientes.setAdapter(new NutrientesAdapter(new ArrayList<Nutrient>(), this));
+        rvNutrientes.setLayoutManager(new LinearLayoutManager(this));
     }
 
     @Override
@@ -63,9 +82,18 @@ public class NutrientesActivity extends Activity implements NutrientesView {
 
     @Override
     public void onFilterListLoaded(List<Nutrient> nutrientList) {
-        Log.d("HOLA", "nutrientList.size(): " + nutrientList.size());
-        for (Nutrient nutrient : nutrientList) {
-            Log.d("HOLA", "id: " + nutrient.getC_id() + " - " + nutrient.getC_ori_name());
+//        Log.d("HOLA", "nutrientList.size(): " + nutrientList.size());
+//        for (Nutrient nutrient : nutrientList) {
+//            Log.d("HOLA", "id: " + nutrient.getC_id() + " - " + nutrient.getC_ori_name());
+//        }
+        if (nutrientList.size() == 0) {
+            showLoadingError();
+            rvNutrientes.setAdapter(new NutrientesAdapter(new ArrayList<Nutrient>(), this));
+            rvNutrientes.getAdapter().notifyDataSetChanged();
+        } else {
+            hideLoadingError();
+            rvNutrientes.setAdapter(new NutrientesAdapter(nutrientList, this));
+            rvNutrientes.getAdapter().notifyDataSetChanged();
         }
     }
 
@@ -89,32 +117,8 @@ public class NutrientesActivity extends Activity implements NutrientesView {
 
     }
 
-    /**
-     * <?xml version="1.0" encoding="utf-8"?>
-     <foodquery>
-     <type level="1a"/>
-     <selection>
-     <atribute name="f_id"/>
-     <atribute name="f_ori_name"/>
-     <atribute name="langual"/>
-     <atribute name="f_eng_name"/>
-     <atribute name="c_ori_name"/>
-     <atribute name="best_location"/>
-     <atribute name="v_unit"/>
-     <atribute name="moex"/>
-     <atribute name="f_origen"/>
-     </selection>
-     <condition>
-     <cond1><atribute1 name="c_id"/></cond1>
-     <relation type="EQUAL"/>
-     <cond3>409</cond3>
-     </condition>
-     <condition>
-     <cond1><atribute1 name="f_origen"/></cond1>
-     <relation type="EQUAL"/>
-     <cond3>BEDCA</cond3>
-     </condition>
-     <order ordtype="DESC"><atribute3 name="best_location"/></order>
-     </foodquery>
-     */
+    @Override
+    public void onListItemClicked(int id) {
+        Log.d("HOLA", "onListItemClicked " + id);
+    }
 }
