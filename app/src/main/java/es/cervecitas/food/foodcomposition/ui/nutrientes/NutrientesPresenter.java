@@ -6,7 +6,7 @@ public interface NutrientesPresenter {
 
     void getFilterList();
 
-    void getFoods(int filter);
+//    void getFoods(int filter);
 
     void cleanup();
 }

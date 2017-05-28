@@ -60,42 +60,42 @@ public class NutrientsPresenterImpl implements NutrientesPresenter {
                 });
     }
 
-    @Override
-    public void getFoods(int filter) {
-//        view.showLoading();
-
-        String condition1 =
-                "<condition>" +
-                "<cond1><atribute1 name=\"c_id\"/></cond1>" +
-                "<relation type=\"EQUAL\"/>" +
-                "<cond3>409</cond3>" +
-                "</condition>";
-
-        String condition2 =
-                "<condition>" +
-                "<cond1><atribute1 name=\"f_origen\"/></cond1>" +
-                "<relation type=\"EQUAL\"/>" +
-                "<cond3>BEDCA</cond3>" +
-                "</condition>";
-
-        String query = getHeaders() + "<foodquery>" + getQueryType1a() + getSelectionFoods() + condition1 + condition2 + getOrderFoods() + "</foodquery>";
-
-        bedcaApi
-                .getByNutrient(RequestBody.create(MediaType.parse("text/xml"), query))
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<F_ListItems>() {
-                    @Override
-                    public void accept(@NonNull F_ListItems f_listItems) throws Exception {
-                        Log.d("HOLA", "f_listItems.getFoodResponse().size(): " + f_listItems.getFoodResponse().size());
-                        for (Food food : f_listItems.getFoodResponse()) {
-                            Log.d("HOLA", "name: " + food.getF_ori_name());
-                            Log.d("HOLA", food.getC_ori_name() + " " + food.getBest_location() + food.getV_unit());
-                        }
-                        Log.d("HOLA", "----------------------------------------");
-                    }
-                });
-    }
+//    @Override
+//    public void getFoods(int filter) {
+////        view.showLoading();
+//
+//        String condition1 =
+//                "<condition>" +
+//                "<cond1><atribute1 name=\"c_id\"/></cond1>" +
+//                "<relation type=\"EQUAL\"/>" +
+//                "<cond3>409</cond3>" +
+//                "</condition>";
+//
+//        String condition2 =
+//                "<condition>" +
+//                "<cond1><atribute1 name=\"f_origen\"/></cond1>" +
+//                "<relation type=\"EQUAL\"/>" +
+//                "<cond3>BEDCA</cond3>" +
+//                "</condition>";
+//
+//        String query = getHeaders() + "<foodquery>" + getQueryType1a() + getSelectionFoods() + condition1 + condition2 + getOrderFoods() + "</foodquery>";
+//
+//        bedcaApi
+//                .getByNutrient(RequestBody.create(MediaType.parse("text/xml"), query))
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Consumer<F_ListItems>() {
+//                    @Override
+//                    public void accept(@NonNull F_ListItems f_listItems) throws Exception {
+//                        Log.d("HOLA", "f_listItems.getFoodResponse().size(): " + f_listItems.getFoodResponse().size());
+//                        for (Food food : f_listItems.getFoodResponse()) {
+//                            Log.d("HOLA", "name: " + food.getF_ori_name());
+//                            Log.d("HOLA", food.getC_ori_name() + " " + food.getBest_location() + food.getV_unit());
+//                        }
+//                        Log.d("HOLA", "----------------------------------------");
+//                    }
+//                });
+//    }
 
     @Override
     public void cleanup() {
