@@ -33,13 +33,13 @@ class NutrientesAdapter extends RecyclerView.Adapter<NutrientesViewHolder> {
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(NutrientesViewHolder holder, int position) {
-        Nutrient nutrient = nutrientList.get(position);
+        final Nutrient nutrient = nutrientList.get(position);
         holder.getTvId().setText(Integer.toString(nutrient.getC_id()));
         holder.getTvName().setText(nutrient.getC_ori_name());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onListItemClicked(v.getId());
+                listener.onListItemClicked(nutrient.getC_id());
             }
         });
     }
