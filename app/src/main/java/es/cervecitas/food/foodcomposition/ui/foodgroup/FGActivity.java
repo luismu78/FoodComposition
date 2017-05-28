@@ -54,7 +54,7 @@ public class FGActivity extends AppCompatActivity
 
         ButterKnife.bind(this);
 
-        rvItemList.setAdapter(new FGAdapter(this, new ArrayList<Food>(), this));
+        rvItemList.setAdapter(new FGAdapter(new ArrayList<Food>(), this));
         rvItemList.setLayoutManager(new LinearLayoutManager(this));
         rvItemList.setHasFixedSize(true);
     }
@@ -84,11 +84,11 @@ public class FGActivity extends AppCompatActivity
     public void onDataLoaded(List<Food> listItems) {
         if (listItems.size() == 0) {
             showLoadingError();
-            rvItemList.setAdapter(new FGAdapter(this, new ArrayList<Food>(), this));
+            rvItemList.setAdapter(new FGAdapter(new ArrayList<Food>(), this));
             rvItemList.getAdapter().notifyDataSetChanged();
         } else {
             hideLoadingError();
-            rvItemList.setAdapter(new FGAdapter(this, listItems, this));
+            rvItemList.setAdapter(new FGAdapter(listItems, this));
             rvItemList.getAdapter().notifyDataSetChanged();
         }
 

@@ -1,6 +1,5 @@
 package es.cervecitas.food.foodcomposition.ui.foodgroupdetail;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,15 +11,13 @@ import es.cervecitas.food.foodcomposition.R;
 
 class FAdapter extends RecyclerView.Adapter<FViewHolder> {
     private List<Food> foodList;
-    private Context context;
     private FAdapterClickListener listener;
 
     interface FAdapterClickListener {
         void onListItemClicked(int id);
     }
 
-    FAdapter(Context context, List<Food> foodList, FAdapterClickListener listener) {
-        this.context = context;
+    FAdapter(List<Food> foodList, FAdapterClickListener listener) {
         this.foodList = foodList;
         this.listener = listener;
     }
@@ -28,7 +25,7 @@ class FAdapter extends RecyclerView.Adapter<FViewHolder> {
 
     @Override
     public FViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(context);
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         return new FViewHolder(inflater.inflate(R.layout.item_list_content, parent, false));
     }
 

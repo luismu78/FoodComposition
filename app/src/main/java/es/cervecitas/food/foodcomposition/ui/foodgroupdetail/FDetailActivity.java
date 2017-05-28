@@ -64,7 +64,7 @@ public class FDetailActivity extends AppCompatActivity
         id = getIntent().getIntExtra(ARG_ITEM_ID, 0);
 
         rvFoodItems = (RecyclerView) findViewById(R.id.rvFoodItems);
-        rvFoodItems.setAdapter(new FAdapter(this, new ArrayList<Food>(), this));
+        rvFoodItems.setAdapter(new FAdapter(new ArrayList<Food>(), this));
         rvFoodItems.setLayoutManager(new LinearLayoutManager(this));
         rvFoodItems.setHasFixedSize(true);
     }
@@ -94,11 +94,11 @@ public class FDetailActivity extends AppCompatActivity
     public void onDataLoaded(List<Food> listItems) {
         if (listItems.size() == 0) {
             showLoadingError();
-            rvFoodItems.setAdapter(new FAdapter(this, listItems, this));
+            rvFoodItems.setAdapter(new FAdapter(listItems, this));
             rvFoodItems.getAdapter().notifyDataSetChanged();
         } else {
             hideLoadingError();
-            rvFoodItems.setAdapter(new FAdapter(this, listItems, this));
+            rvFoodItems.setAdapter(new FAdapter(listItems, this));
             rvFoodItems.getAdapter().notifyDataSetChanged();
         }
     }

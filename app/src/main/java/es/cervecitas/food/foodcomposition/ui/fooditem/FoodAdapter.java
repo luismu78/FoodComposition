@@ -1,6 +1,5 @@
 package es.cervecitas.food.foodcomposition.ui.fooditem;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -18,11 +17,9 @@ class FoodAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<FoodValue> foodValues;
     private List<Object> recyclerViewContents;
-    private Context context;
 
-    FoodAdapter(List<FoodValue> foodValues, Context context) {
+    FoodAdapter(List<FoodValue> foodValues) {
         this.foodValues = foodValues;
-        this.context = context;
 
         prepareFoodValues();
     }
@@ -42,7 +39,7 @@ class FoodAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(context);
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 
         switch (viewType) {
             case VIEW_TYPE_SEPARATOR:
