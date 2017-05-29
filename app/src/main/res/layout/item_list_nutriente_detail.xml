@@ -17,9 +17,15 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_margin="16dp"
+        android:layout_toLeftOf="@+id/tvAmount"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="16dp"
         android:textAppearance="?attr/textAppearanceListItem"
-        tools:text="Maíz, en mazorca, crudo"/>
+        android:ellipsize="end"
+        android:maxLines="1"
+        tools:text="Mermelada de albaricoque y melocotón, baja en calorías"/>
 
     <TextView
         android:id="@+id/tvAmount"
@@ -27,6 +33,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="8dp"
         android:layout_margin="16dp"
         android:textAppearance="?attr/textAppearanceListItem"
         tools:text="85.5g"/>

@@ -1,9 +1,9 @@
 package es.cervecitas.food.foodcomposition.ui.nutrientdetail;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
@@ -21,7 +21,7 @@ import es.cervecitas.food.foodcomposition.R;
 import es.cervecitas.food.foodcomposition.app.FoodCompositionApplication;
 import es.cervecitas.food.foodcomposition.ui.fooditem.FoodItemActivity;
 
-public class NutrientDetailActivity extends Activity implements NutrienteDetailView, NutrientesDetailAdapter.ClickListener {
+public class NutrientDetailActivity extends AppCompatActivity implements NutrienteDetailView, NutrientesDetailAdapter.ClickListener {
 
     public static final String ARG_NUTRIENT_ID = "nutrientId";
 

@@ -25,8 +25,7 @@ import es.cervecitas.food.foodcomposition.app.FoodCompositionApplication;
 import es.cervecitas.food.foodcomposition.ui.foodgroup.FGActivity;
 import es.cervecitas.food.foodcomposition.ui.fooditem.FoodItemActivity;
 
-public class FDetailActivity extends AppCompatActivity
-        implements FView, FAdapter.FAdapterClickListener {
+public class FDetailActivity extends AppCompatActivity implements FView, FAdapter.FAdapterClickListener {
 
     public static final String ARG_ITEM_ID = "item_id";
 
@@ -63,7 +62,6 @@ public class FDetailActivity extends AppCompatActivity
 
         id = getIntent().getIntExtra(ARG_ITEM_ID, 0);
 
-        rvFoodItems = (RecyclerView) findViewById(R.id.rvFoodItems);
         rvFoodItems.setAdapter(new FAdapter(new ArrayList<Food>(), this));
         rvFoodItems.setLayoutManager(new LinearLayoutManager(this));
         rvFoodItems.setHasFixedSize(true);
@@ -77,7 +75,7 @@ public class FDetailActivity extends AppCompatActivity
     }
 
     @Override
-    public void onResume() {
+    protected void onResume() {
         super.onResume();
 
         presenter.getFood(id);
@@ -94,7 +92,7 @@ public class FDetailActivity extends AppCompatActivity
     public void onDataLoaded(List<Food> listItems) {
         if (listItems.size() == 0) {
             showLoadingError();
-            rvFoodItems.setAdapter(new FAdapter(listItems, this));
+            rvFoodItems.setAdapter(new FAdapter(new ArrayList<Food>(), this));
             rvFoodItems.getAdapter().notifyDataSetChanged();
         } else {
             hideLoadingError();

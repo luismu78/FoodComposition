@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
@@ -21,7 +22,7 @@ import es.cervecitas.food.foodcomposition.R;
 import es.cervecitas.food.foodcomposition.app.FoodCompositionApplication;
 import es.cervecitas.food.foodcomposition.ui.nutrientdetail.NutrientDetailActivity;
 
-public class NutrientesActivity extends Activity implements NutrientesView, NutrientesAdapter.ClickListener {
+public class NutrientesActivity extends AppCompatActivity implements NutrientesView, NutrientesAdapter.ClickListener {
 
     @Inject
     NutrientesPresenter nutrientsPresenter;
