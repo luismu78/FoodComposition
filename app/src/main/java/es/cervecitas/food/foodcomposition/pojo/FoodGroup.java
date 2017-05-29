@@ -1,10 +1,10 @@
-package es.cervecitas.food.foodcomposition.ui.foodgroup;
+package es.cervecitas.food.foodcomposition.pojo;
 
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
 @Root(name = "food", strict = false)
-class FoodGroup {
+public class FoodGroup {
 
     @Element(name = "fg_id")
     private int id;
@@ -15,11 +15,11 @@ class FoodGroup {
     public FoodGroup() {
     }
 
-    int getId() {
+    public int getId() {
         return id;
     }
 
-    String getName() {
+    public String getName() {
         return name;
     }
 }

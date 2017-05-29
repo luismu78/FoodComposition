@@ -20,6 +20,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import es.cervecitas.food.foodcomposition.R;
 import es.cervecitas.food.foodcomposition.app.FoodCompositionApplication;
+import es.cervecitas.food.foodcomposition.pojo.FoodGroup;
 import es.cervecitas.food.foodcomposition.ui.foodgroupdetail.FDetailActivity;
 
 public class FGActivity extends AppCompatActivity implements FGView, FGAdapter.FGAdapterClickListener {

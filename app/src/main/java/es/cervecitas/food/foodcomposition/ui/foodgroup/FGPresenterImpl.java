@@ -9,6 +9,7 @@ import javax.inject.Inject;
 
 import es.cervecitas.food.foodcomposition.app.FoodCompositionApplication;
 import es.cervecitas.food.foodcomposition.network.BedcaApi;
+import es.cervecitas.food.foodcomposition.pojo.FoodGroup;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.CompositeDisposable;
