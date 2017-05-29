@@ -66,11 +66,8 @@ public class NutrienteDetailPresenterImpl implements NutrienteDetailPresenter {
                 .subscribe(new Consumer<NutrientDetailResponse>() {
                     @Override
                     public void accept(@NonNull NutrientDetailResponse nutrientDetailResponse) throws Exception {
-                        Log.d("HOLA", "nutrientDetailResponse.getFoodResponse().size(): " + nutrientDetailResponse.getFoodResponse().size());
-
-                        for (Food food : nutrientDetailResponse.getFoodResponse()) {
-                            Log.d("HOLA", food.getF_id() + " " + food.getF_ori_name() + " - " + food.getC_ori_name() + ": " + food.getBest_location() + " " + food.getV_unit());
-                        }
+                        view.onDataLoaded(nutrientDetailResponse.getFoodResponse());
+                        view.hideLoading();
                     }
                 }));
 

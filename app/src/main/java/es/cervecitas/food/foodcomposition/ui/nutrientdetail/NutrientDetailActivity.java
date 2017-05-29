@@ -14,7 +14,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import es.cervecitas.food.foodcomposition.R;
 import es.cervecitas.food.foodcomposition.app.FoodCompositionApplication;
-import es.cervecitas.food.foodcomposition.ui.fooditem.Food;
 
 public class NutrientDetailActivity extends Activity
         implements NutrienteDetailView {
@@ -66,7 +65,11 @@ public class NutrientDetailActivity extends Activity
 
     @Override
     public void onDataLoaded(List<Food> foodList) {
+        Log.d("HOLA", "nutrientDetailResponse.getFoodResponse().size(): " + foodList.size());
 
+        for (Food food : foodList) {
+            Log.d("HOLA", food.getF_id() + " " + food.getF_ori_name() + " - " + food.getC_ori_name() + ": " + food.getBest_location() + " " + food.getV_unit());
+        }
     }
 
     @Override
