@@ -7,7 +7,7 @@ import es.cervecitas.food.foodcomposition.ui.foodgroup.FGPresenterImpl;
 import es.cervecitas.food.foodcomposition.ui.nutrientdetail.NutrienteDetailPresenter;
 import es.cervecitas.food.foodcomposition.ui.nutrientdetail.NutrienteDetailPresenterImpl;
 import es.cervecitas.food.foodcomposition.ui.nutrientes.NutrientesPresenter;
-import es.cervecitas.food.foodcomposition.ui.nutrientes.NutrientsPresenterImpl;
+import es.cervecitas.food.foodcomposition.ui.nutrientes.NutrientesPresenterImpl;
 import es.cervecitas.food.foodcomposition.ui.search.SearchPresenter;
 import es.cervecitas.food.foodcomposition.ui.search.SearchPresenterImpl;
 import es.cervecitas.food.foodcomposition.ui.foodgroupdetail.FPresenter;
@@ -50,7 +50,7 @@ public class PresenterModule {
     @Provides
     @Singleton
     NutrientesPresenter provideNutrientesPresenter(Context context) {
-        return new NutrientsPresenterImpl(context);
+        return new NutrientesPresenterImpl(context);
     }
 
     @Provides

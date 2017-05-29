@@ -1,7 +1,6 @@
 package es.cervecitas.food.foodcomposition.ui.nutrientdetail;
 
 import android.content.Context;
-import android.util.Log;
 
 import javax.inject.Inject;
 
@@ -70,7 +69,6 @@ public class NutrienteDetailPresenterImpl implements NutrienteDetailPresenter {
                         view.hideLoading();
                     }
                 }));
-
 
 
     }

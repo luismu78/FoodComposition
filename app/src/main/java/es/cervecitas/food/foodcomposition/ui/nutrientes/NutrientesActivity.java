@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -20,7 +19,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import es.cervecitas.food.foodcomposition.R;
 import es.cervecitas.food.foodcomposition.app.FoodCompositionApplication;
-import es.cervecitas.food.foodcomposition.ui.foodgroupdetail.Food;
 import es.cervecitas.food.foodcomposition.ui.nutrientdetail.NutrientDetailActivity;
 
 public class NutrientesActivity extends Activity implements NutrientesView, NutrientesAdapter.ClickListener {
@@ -47,7 +45,7 @@ public class NutrientesActivity extends Activity implements NutrientesView, Nutr
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nutriente_list);
 
-        ((FoodCompositionApplication)getApplication()).getAppComponent().inject(this);
+        ((FoodCompositionApplication) getApplication()).getAppComponent().inject(this);
 
         ButterKnife.bind(this);
 
@@ -66,7 +64,6 @@ public class NutrientesActivity extends Activity implements NutrientesView, Nutr
     protected void onResume() {
         super.onResume();
 
-//        nutrientsPresenter.getFoods(409);
         nutrientsPresenter.getFilterList();
     }
 
@@ -78,16 +75,7 @@ public class NutrientesActivity extends Activity implements NutrientesView, Nutr
     }
 
     @Override
-    public void onFoodDataLoaded(List<Food> FoodItems) {
-
-    }
-
-    @Override
     public void onFilterListLoaded(List<Nutrient> nutrientList) {
-//        Log.d("HOLA", "nutrientList.size(): " + nutrientList.size());
-//        for (Nutrient nutrient : nutrientList) {
-//            Log.d("HOLA", "id: " + nutrient.getC_id() + " - " + nutrient.getC_ori_name());
-//        }
         if (nutrientList.size() == 0) {
             showLoadingError();
             rvNutrientes.setAdapter(new NutrientesAdapter(new ArrayList<Nutrient>(), this));

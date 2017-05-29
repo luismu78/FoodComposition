@@ -6,10 +6,9 @@ import dagger.Component;
 import es.cervecitas.food.foodcomposition.ui.foodgroup.FGActivity;
 import es.cervecitas.food.foodcomposition.ui.foodgroup.FGPresenterImpl;
 import es.cervecitas.food.foodcomposition.ui.nutrientdetail.NutrientDetailActivity;
-import es.cervecitas.food.foodcomposition.ui.nutrientdetail.NutrienteDetailPresenter;
 import es.cervecitas.food.foodcomposition.ui.nutrientdetail.NutrienteDetailPresenterImpl;
 import es.cervecitas.food.foodcomposition.ui.nutrientes.NutrientesActivity;
-import es.cervecitas.food.foodcomposition.ui.nutrientes.NutrientsPresenterImpl;
+import es.cervecitas.food.foodcomposition.ui.nutrientes.NutrientesPresenterImpl;
 import es.cervecitas.food.foodcomposition.ui.search.SearchActivity;
 import es.cervecitas.food.foodcomposition.ui.search.SearchPresenterImpl;
 import es.cervecitas.food.foodcomposition.ui.foodgroupdetail.FDetailActivity;
@@ -42,7 +41,7 @@ public interface AppComponent {
 
     void inject(SearchActivity target);
 
-    void inject(NutrientsPresenterImpl target);
+    void inject(NutrientesPresenterImpl target);
 
     void inject(NutrientesActivity target);
 
