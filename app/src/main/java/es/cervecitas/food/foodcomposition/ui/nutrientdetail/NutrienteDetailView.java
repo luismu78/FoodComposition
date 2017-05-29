@@ -1,6 +1,7 @@
 package es.cervecitas.food.foodcomposition.ui.nutrientdetail;
 
 import java.util.List;
+import es.cervecitas.food.foodcomposition.pojo.Food;
 
 interface NutrienteDetailView {
 

@@ -21,6 +21,8 @@ import es.cervecitas.food.foodcomposition.R;
 import es.cervecitas.food.foodcomposition.app.FoodCompositionApplication;
 import es.cervecitas.food.foodcomposition.ui.fooditem.FoodItemActivity;
 
+import es.cervecitas.food.foodcomposition.pojo.Food;
+
 public class NutrientDetailActivity extends AppCompatActivity implements NutrienteDetailView, NutrientesDetailAdapter.ClickListener {
 
     public static final String ARG_NUTRIENT_ID = "nutrientId";
