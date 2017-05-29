@@ -47,7 +47,7 @@ public class NutrientsPresenterImpl implements NutrientesPresenter {
 
         String query = getHeaders() + "<foodquery>" + getQueryType3h() + getSelectionFilter() + condition1 + getFilterOrder() + "</foodquery>";
 
-        bedcaApi
+        compositeDisposable.add(bedcaApi
                 .getNutrientNames(RequestBody.create(MediaType.parse("text/xml"), query))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -57,7 +57,7 @@ public class NutrientsPresenterImpl implements NutrientesPresenter {
                         view.onFilterListLoaded(bedcaResponse.getFoodResponse());
                         view.hideLoading();
                     }
-                });
+                }));
     }
 
 //    @Override
@@ -99,7 +99,7 @@ public class NutrientsPresenterImpl implements NutrientesPresenter {
 
     @Override
     public void cleanup() {
-
+        compositeDisposable.clear();
     }
 
     private String getHeaders() {

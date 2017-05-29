@@ -53,7 +53,7 @@ public class NutrienteDetailPresenterImpl implements NutrienteDetailPresenter {
 
         String query = getHeaders() + "<foodquery>" + getQueryType() + getSelection() + condition1 + condition2 + getOrder() + "</foodquery>";
 
-        bedcaApi
+        compositeDisposable.add(bedcaApi
                 .getFoodByNutrient(RequestBody.create(MediaType.parse("text/xml"), query))
                 .subscribeOn(Schedulers.io())
                 .onErrorReturn(new Function<Throwable, NutrientDetailResponse>() {
@@ -69,10 +69,10 @@ public class NutrienteDetailPresenterImpl implements NutrienteDetailPresenter {
                         Log.d("HOLA", "nutrientDetailResponse.getFoodResponse().size(): " + nutrientDetailResponse.getFoodResponse().size());
 
                         for (Food food : nutrientDetailResponse.getFoodResponse()) {
-                            Log.d("HOLA", food.getF_id() + " " + food.getF_ori_name() + " - " + food.getC_ori_name() + ": " + food.getV_unit());
+                            Log.d("HOLA", food.getF_id() + " " + food.getF_ori_name() + " - " + food.getC_ori_name() + ": " + food.getBest_location() + " " + food.getV_unit());
                         }
                     }
-                });
+                }));
 
 
 
@@ -104,7 +104,7 @@ public class NutrienteDetailPresenterImpl implements NutrienteDetailPresenter {
 
     @Override
     public void cleanUp() {
-//        compositeDisposable = null;
-//        view = null;
+        compositeDisposable.clear();
+        view = null;
     }
 }
