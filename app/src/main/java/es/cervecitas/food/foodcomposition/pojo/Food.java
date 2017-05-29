@@ -1,4 +1,4 @@
-package es.cervecitas.food.foodcomposition.ui.nutrientdetail;
+package es.cervecitas.food.foodcomposition.pojo;
 
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
@@ -6,20 +6,28 @@ import org.simpleframework.xml.Root;
 @Root(name = "food", strict = false)
 public class Food {
 
-    @Element(name = "f_id", required = false) //DONE
+    @Element(name = "f_id")
     private int f_id;
 
-    @Element(name = "f_ori_name", required = false) //DONE
+    // Nombre del alimento
+    @Element(name = "f_ori_name")
     private String f_ori_name;
 
-    @Element(name = "c_ori_name", required = false) //DONE
+    // Nombre del componente
+    @Element(name = "c_ori_name", required = false)
     private String c_ori_name;
 
-    @Element(name = "best_location", required = false) // DONE
+    // valor  va con v_unit
+    @Element(name = "best_location", required = false)
     private String best_location;
 
-    @Element(name = "v_unit", required = false) // DONE
+    // unidad va con best location
+    @Element(name = "v_unit", required = false)
     private String v_unit;
+
+    // aun sin utilizar
+    @Element(name = "edible_portion", required = false) // NO LO UTILIZO AUN
+    private String edible_portion;
 
     public int getF_id() {
         return f_id;
@@ -39,5 +47,9 @@ public class Food {
 
     public String getV_unit() {
         return v_unit;
+    }
+
+    public String getEdible_portion() {
+        return edible_portion;
     }
 }

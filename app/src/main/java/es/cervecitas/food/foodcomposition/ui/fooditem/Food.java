@@ -9,10 +9,10 @@ import java.util.List;
 @Root(name = "food", strict = false)
 public class Food {
 
-    @Element(name = "f_id", required = false)
+    @Element(name = "f_id", required = false) //DONE
     private int f_id;
 
-    @Element(name = "f_ori_name", required = false)
+    @Element(name = "f_ori_name", required = false) //DONE
     private String f_ori_name;
 
     @Element(name = "f_eng_name", required = false)

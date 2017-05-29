@@ -21,7 +21,7 @@ public interface BedcaApi {
     @POST("/bdpub/procquery.php")
     Single<FG_ListItems> getFoodGroups(@Body RequestBody bodyParams);
 
-    // Food Group Detail
+    // food Group Detail
     @Headers({
             "Content-Type:text/xml",
             "Accept-Charset: utf-8"
@@ -29,7 +29,7 @@ public interface BedcaApi {
     @POST("/bdpub/procquery.php")
     Single<F_ListItems> getFoodGroupDetail(@Body RequestBody bodyParams);
 
-    // Food Item detail
+    // food Item detail
     @Headers({
             "Content-Type:text/xml",
             "Accept-Charset: utf-8"

@@ -22,6 +22,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import es.cervecitas.food.foodcomposition.R;
 import es.cervecitas.food.foodcomposition.app.FoodCompositionApplication;
+import es.cervecitas.food.foodcomposition.pojo.Food;
 import es.cervecitas.food.foodcomposition.ui.foodgroup.FGActivity;
 import es.cervecitas.food.foodcomposition.ui.fooditem.FoodItemActivity;
 

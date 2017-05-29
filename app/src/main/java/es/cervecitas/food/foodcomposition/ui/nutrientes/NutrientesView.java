@@ -3,7 +3,6 @@ package es.cervecitas.food.foodcomposition.ui.nutrientes;
 import java.util.List;
 
 import es.cervecitas.food.foodcomposition.ui.base.BaseView;
-import es.cervecitas.food.foodcomposition.ui.foodgroupdetail.Food;
 
 public interface NutrientesView extends BaseView {
 

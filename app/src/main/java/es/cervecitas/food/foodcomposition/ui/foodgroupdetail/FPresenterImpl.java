@@ -18,6 +18,8 @@ import io.reactivex.schedulers.Schedulers;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 
+import es.cervecitas.food.foodcomposition.pojo.Food;
+
 public class FPresenterImpl implements FPresenter {
 
     @Inject

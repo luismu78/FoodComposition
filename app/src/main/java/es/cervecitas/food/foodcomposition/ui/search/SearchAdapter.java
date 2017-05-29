@@ -8,10 +8,10 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import es.cervecitas.food.foodcomposition.R;
-import es.cervecitas.food.foodcomposition.ui.foodgroupdetail.Food;
+import es.cervecitas.food.foodcomposition.pojo.Food;
 
 class SearchAdapter extends RecyclerView.Adapter<SearchViewHolder> {
-    private List<es.cervecitas.food.foodcomposition.ui.foodgroupdetail.Food> foodList;
+    private List<Food> foodList;
     private SearchAdapterClickListener listener;
 
     interface SearchAdapterClickListener {
