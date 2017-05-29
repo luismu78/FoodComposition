@@ -6,7 +6,7 @@ import java.util.List;
 
 interface FGView extends BaseView {
 
-    void onDataLoaded(List<Food> listItems);
+    void onDataLoaded(List<FoodGroup> listItems);
 
     void showLoading();
 

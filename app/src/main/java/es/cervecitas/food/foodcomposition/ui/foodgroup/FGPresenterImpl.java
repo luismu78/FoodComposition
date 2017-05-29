@@ -55,7 +55,7 @@ public class FGPresenterImpl implements FGPresenter {
                 .subscribe(new Consumer<FG_ListItems>() {
                     @Override
                     public void accept(@NonNull FG_ListItems fg_listItems) throws Exception {
-                        List<Food> foodList = new ArrayList<>();
+                        List<FoodGroup> foodList = new ArrayList<>();
 
                         if (fg_listItems.getFoodResponse() != null) {
                             foodList = fg_listItems.getFoodResponse();

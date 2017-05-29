@@ -9,9 +9,9 @@ import java.util.List;
 public class FG_ListItems {
 
     @ElementList(name = "foodresponse", inline = true)
-    private List<Food> foodResponse;
+    private List<FoodGroup> foodResponse;
 
-    List<Food> getFoodResponse() {
+    List<FoodGroup> getFoodResponse() {
         return foodResponse;
     }
 }
