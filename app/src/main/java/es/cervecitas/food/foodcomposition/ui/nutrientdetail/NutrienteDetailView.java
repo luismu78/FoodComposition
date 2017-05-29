@@ -2,7 +2,7 @@ package es.cervecitas.food.foodcomposition.ui.nutrientdetail;
 
 import java.util.List;
 
-public interface NutrienteDetailView {
+interface NutrienteDetailView {
 
     void onDataLoaded(List<Food> foodList);
 

@@ -8,13 +8,12 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import es.cervecitas.food.foodcomposition.R;
-import es.cervecitas.food.foodcomposition.ui.foodgroupdetail.*;
 
-public class NutrientesDetailAdapter extends RecyclerView.Adapter<NutrienteDetailViewHolder> {
+class NutrientesDetailAdapter extends RecyclerView.Adapter<NutrienteDetailViewHolder> {
     private List<Food> foodList;
     private ClickListener listener;
 
-    public interface ClickListener {
+    interface ClickListener {
         void onListItemClicked(int id);
     }
 

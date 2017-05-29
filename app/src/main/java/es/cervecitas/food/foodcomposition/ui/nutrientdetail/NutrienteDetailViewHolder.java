@@ -6,12 +6,12 @@ import android.widget.TextView;
 
 import es.cervecitas.food.foodcomposition.R;
 
-public class NutrienteDetailViewHolder extends RecyclerView.ViewHolder {
+class NutrienteDetailViewHolder extends RecyclerView.ViewHolder {
     private TextView tvId;
     private TextView tvName;
     private TextView tvAmount;
 
-    public NutrienteDetailViewHolder(View itemView) {
+    NutrienteDetailViewHolder(View itemView) {
         super(itemView);
 
         tvId = (TextView) itemView.findViewById(R.id.tvId);
@@ -19,15 +19,15 @@ public class NutrienteDetailViewHolder extends RecyclerView.ViewHolder {
         tvAmount = (TextView) itemView.findViewById(R.id.tvAmount);
     }
 
-    public TextView getTvId() {
+    TextView getTvId() {
         return tvId;
     }
 
-    public TextView getTvName() {
+    TextView getTvName() {
         return tvName;
     }
 
-    public TextView getTvAmount() {
+    TextView getTvAmount() {
         return tvAmount;
     }
 }
