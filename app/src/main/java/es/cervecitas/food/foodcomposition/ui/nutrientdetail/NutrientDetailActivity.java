@@ -1,4 +1,4 @@
-package es.cervecitas.food.foodcomposition.ui.foodgroup;
+package es.cervecitas.food.foodcomposition.ui.nutrientdetail;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -20,15 +19,19 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import es.cervecitas.food.foodcomposition.R;
 import es.cervecitas.food.foodcomposition.app.FoodCompositionApplication;
-import es.cervecitas.food.foodcomposition.ui.foodgroupdetail.FDetailActivity;
+import es.cervecitas.food.foodcomposition.ui.fooditem.FoodItemActivity;
 
-public class FGActivity extends AppCompatActivity implements FGView, FGAdapter.FGAdapterClickListener {
+public class NutrientDetailActivity extends AppCompatActivity implements NutrienteDetailView, NutrientesDetailAdapter.ClickListener {
+
+    public static final String ARG_NUTRIENT_ID = "nutrientId";
+
+    private int id = 0;
 
     @Inject
-    FGPresenter presenter;
+    NutrienteDetailPresenter presenter;
 
-    @BindView(R.id.rvItemList)
-    RecyclerView rvItemList;
+    @BindView(R.id.rvNutrientes)
+    RecyclerView rvNutrientes;
 
     // Error
 
@@ -41,21 +44,20 @@ public class FGActivity extends AppCompatActivity implements FGView, FGAdapter.F
     @BindView(R.id.tvNoData)
     TextView tvNoData;
 
-    @BindView(R.id.subNoData)
-    TextView subNoData;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_group_list);
+        setContentView(R.layout.activity_nutriente_list);
 
         ((FoodCompositionApplication) getApplication()).getAppComponent().inject(this);
 
         ButterKnife.bind(this);
 
-        rvItemList.setAdapter(new FGAdapter(new ArrayList<Food>(), this));
-        rvItemList.setLayoutManager(new LinearLayoutManager(this));
-        rvItemList.setHasFixedSize(true);
+        id = getIntent().getIntExtra(ARG_NUTRIENT_ID, 0);
+
+        rvNutrientes.setAdapter(new NutrientesDetailAdapter(new ArrayList<Food>(), this));
+        rvNutrientes.setLayoutManager(new LinearLayoutManager(this));
+        rvNutrientes.setHasFixedSize(true);
     }
 
     @Override
@@ -69,57 +71,53 @@ public class FGActivity extends AppCompatActivity implements FGView, FGAdapter.F
     protected void onResume() {
         super.onResume();
 
-        presenter.getFoodGroups();
+        presenter.getFoodByNutrient(id);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
 
-        presenter.cleanup();
+        presenter.cleanUp();
     }
 
     @Override
-    public void onDataLoaded(List<Food> listItems) {
-        if (listItems.size() == 0) {
+    public void onDataLoaded(List<Food> foodList) {
+        if (foodList.size() == 0) {
             showLoadingError();
-            rvItemList.setAdapter(new FGAdapter(new ArrayList<Food>(), this));
-            rvItemList.getAdapter().notifyDataSetChanged();
+            rvNutrientes.setAdapter(new NutrientesDetailAdapter(new ArrayList<Food>(), this));
+            rvNutrientes.getAdapter().notifyDataSetChanged();
         } else {
             hideLoadingError();
-            rvItemList.setAdapter(new FGAdapter(listItems, this));
-            rvItemList.getAdapter().notifyDataSetChanged();
+            rvNutrientes.setAdapter(new NutrientesDetailAdapter(foodList, this));
+            rvNutrientes.getAdapter().notifyDataSetChanged();
         }
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
+
+    @Override
+    public void showLoadingError() {
+
+    }
+
+    @Override
+    public void hideLoadingError() {
 
     }
 
     @Override
     public void onListItemClicked(int id) {
-        Intent intent = new Intent(this, FDetailActivity.class);
-        intent.putExtra(FDetailActivity.ARG_ITEM_ID, id);
+        Intent intent = new Intent(this, FoodItemActivity.class);
+        intent.putExtra(FoodItemActivity.ARG_FOOD_ID, id);
         startActivity(intent);
     }
-
-    @Override
-    public void showLoading() {
-//        swipeRefreshLayout.setRefreshing(true);
-    }
-
-    @Override
-    public void hideLoading() {
-//        swipeRefreshLayout.setRefreshing(false);
-    }
-
-    @Override
-    public void showLoadingError() {
-        llNoData.setVisibility(View.VISIBLE);
-        tvNoData.setText("Error leyendo del servidor");
-        subNoData.setText("Inténtelo mas tarde");
-    }
-
-    @Override
-    public void hideLoadingError() {
-        llNoData.setVisibility(View.GONE);
-    }
-
 }

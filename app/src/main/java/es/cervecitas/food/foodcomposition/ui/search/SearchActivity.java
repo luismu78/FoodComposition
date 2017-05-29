@@ -143,7 +143,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView, Sea
 
         ButterKnife.bind(this);
 
-        rvAlimentos.setAdapter(new SearchAdapter(this, new ArrayList<Food>(), this));
+        rvAlimentos.setAdapter(new SearchAdapter(new ArrayList<Food>(), this));
         rvAlimentos.setLayoutManager(new LinearLayoutManager(this));
         rvAlimentos.setHasFixedSize(false);
 
@@ -188,7 +188,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView, Sea
 
         if (foods.size() == 0) {
             showSearchError();
-            rvAlimentos.setAdapter(new SearchAdapter(this, new ArrayList<Food>(), this));
+            rvAlimentos.setAdapter(new SearchAdapter(new ArrayList<Food>(), this));
             rvAlimentos.getAdapter().notifyDataSetChanged();
         } else {
             hideSearchError();
@@ -197,7 +197,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView, Sea
             layoutParams.removeRule(RelativeLayout.CENTER_IN_PARENT);
             rlSearch.setLayoutParams(layoutParams);
 
-            rvAlimentos.setAdapter(new SearchAdapter(this, foods, this));
+            rvAlimentos.setAdapter(new SearchAdapter(foods, this));
             rvAlimentos.getAdapter().notifyDataSetChanged();
         }
     }

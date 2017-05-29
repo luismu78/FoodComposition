@@ -45,7 +45,7 @@ public class FoodItemActivity extends AppCompatActivity implements FoodView {
 
         id = getIntent().getIntExtra(ARG_FOOD_ID, 0);
 
-        rvItemList.setAdapter(new FoodAdapter(new ArrayList<FoodValue>(), this));
+        rvItemList.setAdapter(new FoodAdapter(new ArrayList<FoodValue>()));
         rvItemList.setLayoutManager(new LinearLayoutManager(this));
         rvItemList.setHasFixedSize(true);
     }
@@ -73,7 +73,7 @@ public class FoodItemActivity extends AppCompatActivity implements FoodView {
 
     @Override
     public void onDataLoaded(Food food) {
-        rvItemList.setAdapter(new FoodAdapter(food.getFoodvalue(), this));
+        rvItemList.setAdapter(new FoodAdapter(food.getFoodvalue()));
         rvItemList.getAdapter().notifyDataSetChanged();
         if (appBarLayout != null) {
             appBarLayout.setTitle(food.getF_ori_name());

@@ -12,7 +12,7 @@ class Food {
     @Element(name = "fg_ori_name")
     private String fg_ori_name;
 
-    @Element(name = "fg_eng_name")
+    @Element(name = "fg_eng_name", required = false)
     private String fg_eng_name;
 
     public Food() {

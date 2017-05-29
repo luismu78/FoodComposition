@@ -3,7 +3,8 @@ package es.cervecitas.food.foodcomposition.network;
 import es.cervecitas.food.foodcomposition.ui.foodgroup.FG_ListItems;
 import es.cervecitas.food.foodcomposition.ui.foodgroupdetail.F_ListItems;
 import es.cervecitas.food.foodcomposition.ui.fooditem.FoodItemResponse;
-
+import es.cervecitas.food.foodcomposition.ui.nutrientdetail.NutrientDetailResponse;
+import es.cervecitas.food.foodcomposition.ui.nutrientes.BedcaResponse;
 import io.reactivex.Single;
 import okhttp3.RequestBody;
 import retrofit2.http.Body;
@@ -39,4 +40,14 @@ public interface BedcaApi {
     // Search
     @POST("/bdpub/procquery.php")
     Single<F_ListItems> getSearchResults(@Body RequestBody bodyParams);
+
+    // ByNutrient
+    @POST("/bdpub/procquery.php")
+    Single<F_ListItems> getByNutrient(@Body RequestBody requestBody);
+
+    @POST("/bdpub/procquery.php")
+    Single<BedcaResponse> getNutrientNames(@Body RequestBody requestBody);
+
+    @POST("/bdpub/procquery.php")
+    Single<NutrientDetailResponse> getFoodByNutrient(@Body RequestBody requestBody);
 }
