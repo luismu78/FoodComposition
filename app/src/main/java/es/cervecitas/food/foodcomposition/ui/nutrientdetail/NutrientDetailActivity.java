@@ -1,11 +1,16 @@
 package es.cervecitas.food.foodcomposition.ui.nutrientdetail;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -14,9 +19,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import es.cervecitas.food.foodcomposition.R;
 import es.cervecitas.food.foodcomposition.app.FoodCompositionApplication;
+import es.cervecitas.food.foodcomposition.ui.fooditem.FoodItemActivity;
 
-public class NutrientDetailActivity extends Activity
-        implements NutrienteDetailView {
+public class NutrientDetailActivity extends Activity implements NutrienteDetailView, NutrientesDetailAdapter.ClickListener {
 
     public static final String ARG_NUTRIENT_ID = "nutrientId";
 
@@ -27,6 +32,17 @@ public class NutrientDetailActivity extends Activity
 
     @BindView(R.id.rvNutrientes)
     RecyclerView rvNutrientes;
+
+    // Error
+
+    @BindView(R.id.llNoData)
+    LinearLayout llNoData;
+
+    @BindView(R.id.imgNoData)
+    ImageView imgNoData;
+
+    @BindView(R.id.tvNoData)
+    TextView tvNoData;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,7 +55,9 @@ public class NutrientDetailActivity extends Activity
 
         id = getIntent().getIntExtra(ARG_NUTRIENT_ID, 0);
 
-        Log.d("HOLA", getClass().getSimpleName() + " - id: " + id);
+        rvNutrientes.setAdapter(new NutrientesDetailAdapter(new ArrayList<Food>(), this));
+        rvNutrientes.setLayoutManager(new LinearLayoutManager(this));
+        rvNutrientes.setHasFixedSize(true);
     }
 
     @Override
@@ -65,10 +83,14 @@ public class NutrientDetailActivity extends Activity
 
     @Override
     public void onDataLoaded(List<Food> foodList) {
-        Log.d("HOLA", "nutrientDetailResponse.getFoodResponse().size(): " + foodList.size());
-
-        for (Food food : foodList) {
-            Log.d("HOLA", food.getF_id() + " " + food.getF_ori_name() + " - " + food.getC_ori_name() + ": " + food.getBest_location() + " " + food.getV_unit());
+        if (foodList.size() == 0) {
+            showLoadingError();
+            rvNutrientes.setAdapter(new NutrientesDetailAdapter(new ArrayList<Food>(), this));
+            rvNutrientes.getAdapter().notifyDataSetChanged();
+        } else {
+            hideLoadingError();
+            rvNutrientes.setAdapter(new NutrientesDetailAdapter(foodList, this));
+            rvNutrientes.getAdapter().notifyDataSetChanged();
         }
     }
 
@@ -90,5 +112,12 @@ public class NutrientDetailActivity extends Activity
     @Override
     public void hideLoadingError() {
 
+    }
+
+    @Override
+    public void onListItemClicked(int id) {
+        Intent intent = new Intent(this, FoodItemActivity.class);
+        intent.putExtra(FoodItemActivity.ARG_FOOD_ID, id);
+        startActivity(intent);
     }
 }
