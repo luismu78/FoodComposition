@@ -1,12 +1,17 @@
 package es.cervecitas.food.foodcomposition.pojo;
 
 import org.simpleframework.xml.Element;
+import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
+
+import java.util.List;
+
+import es.cervecitas.food.foodcomposition.ui.fooditem.FoodValue;
 
 @Root(name = "food", strict = false)
 public class Food {
 
-    @Element(name = "f_id")
+    @Element(name = "f_id", required = false)
     private int f_id;
 
     // Nombre del alimento
@@ -28,6 +33,9 @@ public class Food {
     // aun sin utilizar
     @Element(name = "edible_portion", required = false) // NO LO UTILIZO AUN
     private String edible_portion;
+
+    @ElementList(inline = true, required = false)
+    private List<FoodValue> foodvalue;
 
     public int getF_id() {
         return f_id;
@@ -51,5 +59,9 @@ public class Food {
 
     public String getEdible_portion() {
         return edible_portion;
+    }
+
+    public List<FoodValue> getFoodvalue() {
+        return foodvalue;
     }
 }

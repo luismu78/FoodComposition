@@ -5,6 +5,8 @@ import org.simpleframework.xml.Root;
 
 import java.util.List;
 
+import es.cervecitas.food.foodcomposition.pojo.Food;
+
 @Root(strict = false)
 public class FoodItemResponse {
 

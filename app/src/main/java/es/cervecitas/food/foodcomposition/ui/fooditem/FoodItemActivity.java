@@ -16,6 +16,8 @@ import butterknife.ButterKnife;
 import es.cervecitas.food.foodcomposition.R;
 import es.cervecitas.food.foodcomposition.app.FoodCompositionApplication;
 
+import es.cervecitas.food.foodcomposition.pojo.Food;
+
 public class FoodItemActivity extends AppCompatActivity implements FoodView {
 
     public static final String ARG_FOOD_ID = "food_id";
