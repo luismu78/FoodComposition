@@ -1,6 +1,5 @@
 package es.cervecitas.food.foodcomposition.ui.nutrientes;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -20,6 +19,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import es.cervecitas.food.foodcomposition.R;
 import es.cervecitas.food.foodcomposition.app.FoodCompositionApplication;
+import es.cervecitas.food.foodcomposition.pojo.Nutrient;
 import es.cervecitas.food.foodcomposition.ui.nutrientdetail.NutrientDetailActivity;
 
 public class NutrientesActivity extends AppCompatActivity implements NutrientesView, NutrientesAdapter.ClickListener {

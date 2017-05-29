@@ -2,7 +2,6 @@ package es.cervecitas.food.foodcomposition.ui.nutrientes;
 
 import android.annotation.SuppressLint;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +9,7 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import es.cervecitas.food.foodcomposition.R;
+import es.cervecitas.food.foodcomposition.pojo.Nutrient;
 
 class NutrientesAdapter extends RecyclerView.Adapter<NutrientesViewHolder> {
     private List<Nutrient> nutrientList;
