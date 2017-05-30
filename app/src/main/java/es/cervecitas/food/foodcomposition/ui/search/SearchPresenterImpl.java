@@ -51,7 +51,7 @@ public class SearchPresenterImpl implements SearchPresenter {
         String QUERY = getHeaders() + "<foodquery>" + getQueryType() + getSelection() + condition1 + getOrigen() + getOrder() + "</foodquery>";
 
         compositeDisposable.add(bedcaApi
-                .getSearchResults(RequestBody.create(MediaType.parse("text/xml"), QUERY))
+                .getFoods(RequestBody.create(MediaType.parse("text/xml"), QUERY))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .onErrorReturn(new Function<Throwable, F_ListItems>() {

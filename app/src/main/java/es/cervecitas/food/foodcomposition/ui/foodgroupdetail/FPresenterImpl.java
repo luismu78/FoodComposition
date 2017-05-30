@@ -57,7 +57,7 @@ public class FPresenterImpl implements FPresenter {
         String query = getHeaders() + "<foodquery>" + getQueryType() + getSelection() + condition1 + condition2 + getOrder() + "</foodquery>";
 
         compositeDisposable.add(bedcaApi
-                .getFoodGroupDetail(RequestBody.create(MediaType.parse("text/xml"), query))
+                .getFoods(RequestBody.create(MediaType.parse("text/xml"), query))
                 .subscribeOn(Schedulers.io())
                 .onErrorReturn(new Function<Throwable, F_ListItems>() {
                     @Override
