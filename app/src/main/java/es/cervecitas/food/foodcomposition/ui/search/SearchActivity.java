@@ -26,6 +26,7 @@ import es.cervecitas.food.foodcomposition.R;
 import es.cervecitas.food.foodcomposition.app.FoodCompositionApplication;
 import es.cervecitas.food.foodcomposition.pojo.Food;
 import es.cervecitas.food.foodcomposition.ui.fooditem.FoodItemActivity;
+import es.cervecitas.food.foodcomposition.ui.shared.DefaultDividerItemDecorator;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
@@ -143,6 +144,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView, Sea
 
         ButterKnife.bind(this);
 
+        rvAlimentos.addItemDecoration(new DefaultDividerItemDecorator(this));
         rvAlimentos.setAdapter(new SearchAdapter(new ArrayList<Food>(), this));
         rvAlimentos.setLayoutManager(new LinearLayoutManager(this));
         rvAlimentos.setHasFixedSize(false);

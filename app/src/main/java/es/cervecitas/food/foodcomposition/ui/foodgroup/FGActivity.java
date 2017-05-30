@@ -22,6 +22,7 @@ import es.cervecitas.food.foodcomposition.R;
 import es.cervecitas.food.foodcomposition.app.FoodCompositionApplication;
 import es.cervecitas.food.foodcomposition.pojo.FoodGroup;
 import es.cervecitas.food.foodcomposition.ui.foodgroupdetail.FDetailActivity;
+import es.cervecitas.food.foodcomposition.ui.shared.DefaultDividerItemDecorator;
 
 public class FGActivity extends AppCompatActivity implements FGView, FGAdapter.FGAdapterClickListener {
 
@@ -53,7 +54,8 @@ public class FGActivity extends AppCompatActivity implements FGView, FGAdapter.F
         ((FoodCompositionApplication) getApplication()).getAppComponent().inject(this);
 
         ButterKnife.bind(this);
-
+        rvItemList.addItemDecoration(new DefaultDividerItemDecorator(this));
+        rvItemList.addItemDecoration(new DefaultDividerItemDecorator(this));
         rvItemList.setAdapter(new FGAdapter(new ArrayList<FoodGroup>(), this));
         rvItemList.setLayoutManager(new LinearLayoutManager(this));
         rvItemList.setHasFixedSize(true);

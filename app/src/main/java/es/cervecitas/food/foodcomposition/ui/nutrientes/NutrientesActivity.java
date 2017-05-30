@@ -21,6 +21,7 @@ import es.cervecitas.food.foodcomposition.R;
 import es.cervecitas.food.foodcomposition.app.FoodCompositionApplication;
 import es.cervecitas.food.foodcomposition.pojo.Nutrient;
 import es.cervecitas.food.foodcomposition.ui.nutrientdetail.NutrientDetailActivity;
+import es.cervecitas.food.foodcomposition.ui.shared.DefaultDividerItemDecorator;
 
 public class NutrientesActivity extends AppCompatActivity implements NutrientesView, NutrientesAdapter.ClickListener {
 
@@ -50,6 +51,7 @@ public class NutrientesActivity extends AppCompatActivity implements NutrientesV
 
         ButterKnife.bind(this);
 
+        rvNutrientes.addItemDecoration(new DefaultDividerItemDecorator(this));
         rvNutrientes.setAdapter(new NutrientesAdapter(new ArrayList<Nutrient>(), this));
         rvNutrientes.setLayoutManager(new LinearLayoutManager(this));
     }

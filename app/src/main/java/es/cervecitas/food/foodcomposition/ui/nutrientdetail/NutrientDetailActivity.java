@@ -22,6 +22,7 @@ import es.cervecitas.food.foodcomposition.app.FoodCompositionApplication;
 import es.cervecitas.food.foodcomposition.ui.fooditem.FoodItemActivity;
 
 import es.cervecitas.food.foodcomposition.pojo.Food;
+import es.cervecitas.food.foodcomposition.ui.shared.DefaultDividerItemDecorator;
 
 public class NutrientDetailActivity extends AppCompatActivity implements NutrienteDetailView, NutrientesDetailAdapter.ClickListener {
 
@@ -57,6 +58,7 @@ public class NutrientDetailActivity extends AppCompatActivity implements Nutrien
 
         id = getIntent().getIntExtra(ARG_NUTRIENT_ID, 0);
 
+        rvNutrientes.addItemDecoration(new DefaultDividerItemDecorator(this));
         rvNutrientes.setAdapter(new NutrientesDetailAdapter(new ArrayList<Food>(), this));
         rvNutrientes.setLayoutManager(new LinearLayoutManager(this));
         rvNutrientes.setHasFixedSize(true);

@@ -25,6 +25,7 @@ import es.cervecitas.food.foodcomposition.app.FoodCompositionApplication;
 import es.cervecitas.food.foodcomposition.pojo.Food;
 import es.cervecitas.food.foodcomposition.ui.foodgroup.FGActivity;
 import es.cervecitas.food.foodcomposition.ui.fooditem.FoodItemActivity;
+import es.cervecitas.food.foodcomposition.ui.shared.DefaultDividerItemDecorator;
 
 public class FDetailActivity extends AppCompatActivity implements FView, FAdapter.FAdapterClickListener {
 
@@ -63,6 +64,7 @@ public class FDetailActivity extends AppCompatActivity implements FView, FAdapte
 
         id = getIntent().getIntExtra(ARG_ITEM_ID, 0);
 
+        rvFoodItems.addItemDecoration(new DefaultDividerItemDecorator(this));
         rvFoodItems.setAdapter(new FAdapter(new ArrayList<Food>(), this));
         rvFoodItems.setLayoutManager(new LinearLayoutManager(this));
         rvFoodItems.setHasFixedSize(true);

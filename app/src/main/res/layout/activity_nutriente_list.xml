@@ -10,8 +10,8 @@
         android:id="@+id/rvNutrientes"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
         tools:listitem="@layout/item_list_nutriente" />
 
     <include layout="@layout/no_data" />
