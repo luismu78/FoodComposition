@@ -13,5 +13,8 @@
     <string name="search_hint">Nombre del alimento</string>
     <string name="title_food">Food</string>
 
+    <!-- Footer BEDCA -->
+    <string name="footer_bedca">Fuente: <b>AESAN/BEDCA Base de Datos Española de Composición de Alimentos v1.0 (2010)</b></string>
+
 
 </resources>

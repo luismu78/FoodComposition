@@ -1,54 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center_vertical"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tvNutrientes"
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvNutrientes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="36dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="16dp"
+            android:drawablePadding="16dp"
+            android:drawableStart="@drawable/nutrient"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center_vertical"
+            android:text="Nutrientes"
+            android:textSize="27sp" />
+
+        <TextView
+            android:id="@+id/tvGrupos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="36dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="16dp"
+            android:drawablePadding="16dp"
+            android:drawableStart="@drawable/nutrient"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center_vertical"
+            android:text="Grupos"
+            android:textSize="27sp" />
+
+        <TextView
+            android:id="@+id/tvAlimentos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="36dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="16dp"
+            android:drawablePadding="16dp"
+            android:drawableStart="@drawable/nutrient"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center_vertical"
+            android:text="Alimentos"
+            android:textSize="27sp" />
+
+
+    </LinearLayout>
+
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/tvFooter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="36dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="16dp"
-        android:drawablePadding="16dp"
-        android:drawableStart="@drawable/nutrient"
-        android:fontFamily="sans-serif-medium"
-        android:gravity="center_vertical"
-        android:textSize="27sp"
-        android:text="Nutrientes" />
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="24dp"
+        android:layout_margin="8dp"
+        android:gravity="bottom|center"
+        android:text="@string/footer_bedca"/>
 
-    <TextView
-        android:id="@+id/tvGrupos"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="36dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="16dp"
-        android:drawablePadding="16dp"
-        android:drawableStart="@drawable/nutrient"
-        android:fontFamily="sans-serif-medium"
-        android:gravity="center_vertical"
-        android:textSize="27sp"
-        android:text="Grupos" />
-
-    <TextView
-        android:id="@+id/tvAlimentos"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="36dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="16dp"
-        android:drawablePadding="16dp"
-        android:drawableStart="@drawable/nutrient"
-        android:fontFamily="sans-serif-medium"
-        android:gravity="center_vertical"
-        android:textSize="27sp"
-        android:text="Alimentos" />
-
-</LinearLayout>
+</RelativeLayout>

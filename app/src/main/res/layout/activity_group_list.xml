@@ -7,15 +7,13 @@
     android:orientation="vertical"
     tools:context="es.cervecitas.food.foodcomposition.ui.foodgroup.FGActivity">
 
-    <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/rvItemList"
-        android:name="com.example.luism.foodcomposition.ItemListFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="0dp"
+        android:layout_above="@+id/tvFooter"
         android:orientation="vertical"
         app:layoutManager="LinearLayoutManager"
         tools:context="com.example.luism.foodcomposition.ItemListActivity"
@@ -26,6 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:layout_above="@+id/tvFooter"
         android:orientation="vertical"
         android:visibility="gone">
 
@@ -56,5 +55,14 @@
 
     </LinearLayout>
 
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/tvFooter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="24dp"
+        android:layout_margin="8dp"
+        android:gravity="bottom|center"
+        android:text="@string/footer_bedca"/>
 
 </RelativeLayout>
