@@ -26,41 +26,36 @@
         </activity>
 
         <activity android:name=".ui.search.SearchActivity"
-            android:label="Search"
             android:theme="@style/AppTheme"
             android:parentActivityName=".ui.principal.PrincipalActivity"/>
 
         <activity
             android:name=".ui.foodgroup.FGActivity"
-            android:label="FoodComposition"
+            android:label="@string/title_grupos"
             android:theme="@style/AppTheme"
             android:parentActivityName=".ui.principal.PrincipalActivity"/>
 
         <activity
             android:name=".ui.nutrientes.NutrientesActivity"
-            android:label="Nutrientes"
+            android:label="@string/title_nutrientes"
             android:theme="@style/AppTheme"
             android:parentActivityName=".ui.principal.PrincipalActivity" />
 
         <activity
             android:name=".ui.nutrientdetail.NutrientDetailActivity"
-            android:label="Nutriente"
+            android:label="@string/title_alimentos"
             android:theme="@style/AppTheme"
             android:parentActivityName=".ui.nutrientes.NutrientesActivity" />
 
         <activity
             android:name="es.cervecitas.food.foodcomposition.ui.foodgroupdetail.FDetailActivity"
-            android:label="@string/title_item_detail"
+            android:label="@string/title_group_detail"
             android:parentActivityName="es.cervecitas.food.foodcomposition.ui.foodgroup.FGActivity"
-            android:theme="@style/AppTheme">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="es.cervecitas.food.foodcomposition.ui.foodgroupdetail.FDetailActivity" />
-        </activity>
+            android:theme="@style/AppTheme"/>
 
         <activity
             android:name="es.cervecitas.food.foodcomposition.ui.fooditem.FoodItemActivity"
-            android:label="Food"
+            android:label="@string/title_food"
             android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 

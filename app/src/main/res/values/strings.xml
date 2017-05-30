@@ -1,6 +1,9 @@
 <resources>
-    <string name="app_name">FoodComposition</string>
-    <string name="title_item_detail">Item Detail</string>
+    <string name="app_name">Composición Alimentos</string>
+    <string name="title_group_detail">Alimentos</string>
+    <string name="title_grupos">Grupos</string>
+    <string name="title_nutrientes">Nutrientes</string>
+    <string name="title_alimentos">Alimentos</string>
 
     <!-- FoodPresenterImpl -->
     <string name="c_ori_name">c_ori_name</string>
@@ -8,4 +11,7 @@
     <string name="cg_descripcion">cg_descripcion</string>
     <string name="mu_descripcion">mu_descripcion</string>
     <string name="search_hint">Nombre del alimento</string>
+    <string name="title_food">Food</string>
+
+
 </resources>
