@@ -41,9 +41,6 @@ public interface BedcaApi {
     @POST("/bdpub/procquery.php")
     Single<F_ListItems> getSearchResults(@Body RequestBody bodyParams);
 
-    // ByNutrient
-    @POST("/bdpub/procquery.php")
-    Single<F_ListItems> getByNutrient(@Body RequestBody requestBody);
 
     @POST("/bdpub/procquery.php")
     Single<BedcaResponse> getNutrientNames(@Body RequestBody requestBody);
