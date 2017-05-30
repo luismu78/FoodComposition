@@ -4,7 +4,7 @@ import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
 @Root(name = "foodvalue", strict = false)
-class FoodValue {
+public class FoodValue {
 
     @Element(name = "c_id")
     private int c_id;

@@ -1,4 +1,4 @@
-package es.cervecitas.food.foodcomposition.ui.nutrientes;
+package es.cervecitas.food.foodcomposition.pojo;
 
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;

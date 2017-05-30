@@ -8,16 +8,17 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import es.cervecitas.food.foodcomposition.R;
+import es.cervecitas.food.foodcomposition.pojo.FoodGroup;
 
 class FGAdapter extends RecyclerView.Adapter<FGViewHolder> {
-    private List<Food> foodGroupList;
+    private List<FoodGroup> foodGroupList;
     private FGAdapterClickListener listener;
 
     interface FGAdapterClickListener {
         void onListItemClicked(int id);
     }
 
-    FGAdapter(List<Food> foodGroupList, FGAdapterClickListener listener) {
+    FGAdapter(List<FoodGroup> foodGroupList, FGAdapterClickListener listener) {
         this.foodGroupList = foodGroupList;
         this.listener = listener;
     }
@@ -30,13 +31,13 @@ class FGAdapter extends RecyclerView.Adapter<FGViewHolder> {
 
     @Override
     public void onBindViewHolder(FGViewHolder holder, int position) {
-        final Food food = foodGroupList.get(position);
-        holder.getTvName().setText(food.getFg_ori_name()); // TODO: lang
-        holder.getTvId().setText(String.valueOf(food.getFg_id()));
+        final FoodGroup foodGroup = foodGroupList.get(position);
+        holder.getTvName().setText(foodGroup.getName()); // TODO: lang
+        holder.getTvId().setText(String.valueOf(foodGroup.getName()));
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onListItemClicked(food.getFg_id());
+                listener.onListItemClicked(foodGroup.getId());
             }
         });
     }

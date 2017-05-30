@@ -2,10 +2,14 @@ package es.cervecitas.food.foodcomposition.ui.nutrientdetail;
 
 import android.content.Context;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
 
 import es.cervecitas.food.foodcomposition.app.FoodCompositionApplication;
 import es.cervecitas.food.foodcomposition.network.BedcaApi;
+import es.cervecitas.food.foodcomposition.pojo.Food;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.CompositeDisposable;
@@ -65,7 +69,13 @@ public class NutrienteDetailPresenterImpl implements NutrienteDetailPresenter {
                 .subscribe(new Consumer<NutrientDetailResponse>() {
                     @Override
                     public void accept(@NonNull NutrientDetailResponse nutrientDetailResponse) throws Exception {
-                        view.onDataLoaded(nutrientDetailResponse.getFoodResponse());
+                        List<Food> foodList = new ArrayList<>();
+
+                        if (nutrientDetailResponse.getFoodResponse() != null) {
+                            foodList = nutrientDetailResponse.getFoodResponse();
+                        }
+
+                        view.onDataLoaded(foodList);
                         view.hideLoading();
                     }
                 }));

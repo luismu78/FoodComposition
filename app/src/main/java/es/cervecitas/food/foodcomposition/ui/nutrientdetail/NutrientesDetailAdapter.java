@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import es.cervecitas.food.foodcomposition.R;
+import es.cervecitas.food.foodcomposition.pojo.Food;
 
 class NutrientesDetailAdapter extends RecyclerView.Adapter<NutrienteDetailViewHolder> {
     private List<Food> foodList;

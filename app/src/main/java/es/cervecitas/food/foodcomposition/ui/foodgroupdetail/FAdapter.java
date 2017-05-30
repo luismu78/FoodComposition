@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import es.cervecitas.food.foodcomposition.R;
+import es.cervecitas.food.foodcomposition.pojo.Food;
 
 class FAdapter extends RecyclerView.Adapter<FViewHolder> {
     private List<Food> foodList;

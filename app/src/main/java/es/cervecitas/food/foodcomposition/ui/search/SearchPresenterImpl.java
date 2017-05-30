@@ -9,8 +9,8 @@ import javax.inject.Inject;
 
 import es.cervecitas.food.foodcomposition.app.FoodCompositionApplication;
 import es.cervecitas.food.foodcomposition.network.BedcaApi;
+import es.cervecitas.food.foodcomposition.pojo.Food;
 import es.cervecitas.food.foodcomposition.ui.foodgroupdetail.F_ListItems;
-import es.cervecitas.food.foodcomposition.ui.foodgroupdetail.Food;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.CompositeDisposable;
@@ -43,15 +43,15 @@ public class SearchPresenterImpl implements SearchPresenter {
 
         String condition1 =
                 "<condition>" +
-                "<cond1><atribute1 name=\"f_ori_name\"/></cond1>" +
-                "<relation type=\"LIKE\"/>" +
-                "<cond3>" + s + "</cond3>" +
-                "</condition>";
+                        "<cond1><atribute1 name=\"f_ori_name\"/></cond1>" +
+                        "<relation type=\"LIKE\"/>" +
+                        "<cond3>" + s + "</cond3>" +
+                        "</condition>";
 
         String QUERY = getHeaders() + "<foodquery>" + getQueryType() + getSelection() + condition1 + getOrigen() + getOrder() + "</foodquery>";
 
         compositeDisposable.add(bedcaApi
-                .getSearchResults(RequestBody.create(MediaType.parse("text/xml"), QUERY))
+                .getFoods(RequestBody.create(MediaType.parse("text/xml"), QUERY))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .onErrorReturn(new Function<Throwable, F_ListItems>() {

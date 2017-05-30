@@ -20,6 +20,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import es.cervecitas.food.foodcomposition.R;
 import es.cervecitas.food.foodcomposition.app.FoodCompositionApplication;
+import es.cervecitas.food.foodcomposition.pojo.FoodGroup;
 import es.cervecitas.food.foodcomposition.ui.foodgroupdetail.FDetailActivity;
 
 public class FGActivity extends AppCompatActivity implements FGView, FGAdapter.FGAdapterClickListener {
@@ -53,7 +54,7 @@ public class FGActivity extends AppCompatActivity implements FGView, FGAdapter.F
 
         ButterKnife.bind(this);
 
-        rvItemList.setAdapter(new FGAdapter(new ArrayList<Food>(), this));
+        rvItemList.setAdapter(new FGAdapter(new ArrayList<FoodGroup>(), this));
         rvItemList.setLayoutManager(new LinearLayoutManager(this));
         rvItemList.setHasFixedSize(true);
     }
@@ -80,10 +81,10 @@ public class FGActivity extends AppCompatActivity implements FGView, FGAdapter.F
     }
 
     @Override
-    public void onDataLoaded(List<Food> listItems) {
+    public void onDataLoaded(List<FoodGroup> listItems) {
         if (listItems.size() == 0) {
             showLoadingError();
-            rvItemList.setAdapter(new FGAdapter(new ArrayList<Food>(), this));
+            rvItemList.setAdapter(new FGAdapter(new ArrayList<FoodGroup>(), this));
             rvItemList.getAdapter().notifyDataSetChanged();
         } else {
             hideLoadingError();
