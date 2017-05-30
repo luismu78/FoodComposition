@@ -13,20 +13,9 @@ import retrofit2.http.POST;
 
 public interface BedcaApi {
 
-    // FoodGroups
-    @Headers({
-            "Content-Type:text/xml",
-            "Accept-Charset: utf-8"
-    })
     @POST("/bdpub/procquery.php")
     Single<FG_ListItems> getFoodGroups(@Body RequestBody bodyParams);
 
-
-    // food Item detail
-    @Headers({
-            "Content-Type:text/xml",
-            "Accept-Charset: utf-8"
-    })
     @POST("/bdpub/procquery.php")
     Single<FoodItemResponse> getFoodItemDetail(@Body RequestBody bodyParams);
 

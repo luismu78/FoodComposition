@@ -32,7 +32,7 @@ class FGAdapter extends RecyclerView.Adapter<FGViewHolder> {
     @Override
     public void onBindViewHolder(FGViewHolder holder, int position) {
         final FoodGroup foodGroup = foodGroupList.get(position);
-        holder.getTvName().setText(foodGroup.getName()); // TODO: lang
+        holder.getTvName().setText(foodGroup.getName());
         holder.getTvId().setText(String.valueOf(foodGroup.getName()));
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

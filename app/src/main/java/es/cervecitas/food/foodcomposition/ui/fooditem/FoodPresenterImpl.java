@@ -50,7 +50,7 @@ public class FoodPresenterImpl implements FoodPresenter {
                         .subscribe(new Consumer<FoodItemResponse>() {
                             @Override
                             public void accept(@NonNull FoodItemResponse foodItemResponse) throws Exception {
-                                view.onDataLoaded(foodItemResponse.getFood().get(0)); // TODO: quitar la lista de aqui
+                                view.onDataLoaded(foodItemResponse.getFood().get(0));
                                 view.hideLoading();
                             }
                         }));

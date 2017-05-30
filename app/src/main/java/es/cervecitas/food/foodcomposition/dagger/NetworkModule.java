@@ -77,7 +77,7 @@ public class NetworkModule {
                             }
                         }
                 )
-                .addInterceptor(loggingInterceptor) //TODO: REMOVE this interceptor before releasing. IMPORTANT!!!!
+//                .addInterceptor(loggingInterceptor) //TODO: REMOVE this interceptor before releasing. IMPORTANT!!!!
                 .build();
     }
 

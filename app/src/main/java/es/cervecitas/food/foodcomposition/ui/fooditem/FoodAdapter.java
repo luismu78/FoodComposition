@@ -61,8 +61,7 @@ class FoodAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 break;
             case VIEW_TYPE_FOOD:
                 FoodValue fv = ((FoodValue) recyclerViewContents.get(position));
-                ((FoodViewHolder) holder).getTvName()
-                        .setText(Utils.capitalizeFirstLetter(fv.getC_ori_name())); // TODO: lang
+                ((FoodViewHolder) holder).getTvName().setText(Utils.capitalizeFirstLetter(fv.getC_ori_name()));
                 String description = Utils.capitalizeFirstLetter(fv.getMu_descripcion());
                 ((FoodViewHolder) holder).getTvQuantity()
                         .setText(fv.getBest_location() + " " + fv.getV_unit() + " " + description);
