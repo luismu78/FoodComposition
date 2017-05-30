@@ -94,7 +94,6 @@ public class FPresenterImpl implements FPresenter {
         return "<selection>" +
                 "<atribute name=\"f_id\"/>" +
                 "<atribute name=\"f_ori_name\"/>" +
-                "<atribute name=\"f_origen\"/>" +
                 "</selection>";
     }
 
