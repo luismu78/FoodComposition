@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -10,51 +11,86 @@
         android:gravity="center_vertical"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tvNutrientes"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="270dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:layout_marginBottom="16dp"
             android:layout_marginEnd="36dp"
             android:layout_marginStart="36dp"
             android:layout_marginTop="16dp"
-            android:drawablePadding="16dp"
-            android:drawableStart="@drawable/nutrient"
-            android:fontFamily="sans-serif-medium"
             android:gravity="center_vertical"
-            android:text="Nutrientes"
-            android:textSize="27sp" />
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tvGrupos"
-            android:layout_width="match_parent"
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginRight="16dp"
+                android:src="@drawable/nutrient" />
+
+            <TextView
+                android:id="@+id/tvNutrientes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:text="Nutrientes"
+                android:textSize="27sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="270dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:layout_marginBottom="16dp"
             android:layout_marginEnd="36dp"
             android:layout_marginStart="36dp"
             android:layout_marginTop="16dp"
-            android:drawablePadding="16dp"
-            android:drawableStart="@drawable/nutrient"
-            android:fontFamily="sans-serif-medium"
             android:gravity="center_vertical"
-            android:text="Grupos"
-            android:textSize="27sp" />
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tvAlimentos"
-            android:layout_width="match_parent"
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginRight="16dp"
+                android:src="@drawable/grupos" />
+
+            <TextView
+                android:id="@+id/tvGrupos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:text="Grupos"
+                android:textSize="27sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="270dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:layout_marginBottom="16dp"
             android:layout_marginEnd="36dp"
             android:layout_marginStart="36dp"
             android:layout_marginTop="16dp"
-            android:drawablePadding="16dp"
-            android:drawableStart="@drawable/nutrient"
-            android:fontFamily="sans-serif-medium"
             android:gravity="center_vertical"
-            android:text="Alimentos"
-            android:textSize="27sp" />
+            android:orientation="horizontal">
 
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginRight="16dp"
+                android:src="@drawable/grupos" />
+
+            <TextView
+                android:id="@+id/tvAlimentos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:text="Alimentos"
+                android:textSize="27sp" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -63,9 +99,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="24dp"
         android:layout_margin="8dp"
+        android:layout_marginTop="24dp"
         android:gravity="bottom|center"
-        android:text="@string/footer_bedca"/>
+        android:text="@string/footer_bedca" />
 
 </RelativeLayout>

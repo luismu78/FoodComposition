@@ -70,7 +70,7 @@ public class FoodPresenterImpl implements FoodPresenter {
     private String getSelection() {
         return "<selection>" +
                 "<atribute name=\"" + "c_id" + "\"/>" +
-                "<atribute name=\"" + context.getString(R.string.c_ori_name) + "\"/>" +
+                "<atribute name=\"" + "c_ori_name" + "\"/>" +
                 "<atribute name=\"" + context.getString(R.string.f_ori_name) + "\"/>" +
                 "<atribute name=\"" + context.getString(R.string.cg_descripcion) + "\"/>" +
                 "<atribute name=\"best_location\"/>" +
