@@ -81,7 +81,7 @@ public class NutrientesPresenterImpl implements NutrientesPresenter {
 
     private String getFilterOrder() {
         return "<order ordtype=\"ASC\">" +
-                "<atribute3 name=\"c_id\"/>" +
+                "<atribute3 name=\"c_ori_name\"/>" +
                 "</order>";
     }
 }
