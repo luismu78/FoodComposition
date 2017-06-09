@@ -53,8 +53,16 @@ public class Food {
         return best_location;
     }
 
+    public void setBest_location(String best_location) {
+        this.best_location = best_location;
+    }
+
     public String getV_unit() {
         return v_unit;
+    }
+
+    public void setV_unit(String v_unit) {
+        this.v_unit = v_unit;
     }
 
     public String getEdible_portion() {

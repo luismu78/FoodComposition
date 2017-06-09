@@ -8,6 +8,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import es.cervecitas.food.foodcomposition.app.FoodCompositionApplication;
+import es.cervecitas.food.foodcomposition.app.Utils;
 import es.cervecitas.food.foodcomposition.network.BedcaApi;
 import es.cervecitas.food.foodcomposition.pojo.Food;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -73,6 +74,15 @@ public class NutrienteDetailPresenterImpl implements NutrienteDetailPresenter {
 
                         if (nutrientDetailResponse.getFoodResponse() != null) {
                             foodList = nutrientDetailResponse.getFoodResponse();
+
+                            // TODO: move this to a method or something
+                            // TODO: make this a preference
+                            if (foodList.get(0).getV_unit().equals("kJ")) {
+                                for (Food food : foodList) {
+                                    food.setBest_location(Utils.kjToCal(food.getBest_location()));
+                                    food.setV_unit("Kcal");
+                                }
+                            }
                         }
 
                         view.onDataLoaded(foodList);

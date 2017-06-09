@@ -27,4 +27,9 @@ public class Utils {
         }
         return result;
     }
+
+    public static String kjToCal(String kj) {
+        Double dKj = Double.parseDouble(kj);
+        return Double.toString(dKj / 4.184);
+    }
 }
