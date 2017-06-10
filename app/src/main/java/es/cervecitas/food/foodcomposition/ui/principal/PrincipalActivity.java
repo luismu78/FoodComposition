@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import butterknife.BindView;
@@ -18,14 +19,23 @@ import es.cervecitas.food.foodcomposition.ui.search.SearchActivity;
 
 public class PrincipalActivity extends AppCompatActivity {
 
-    @BindView(R.id.tvNutrientes)
-    TextView tvNutrientes;
+    @BindView(R.id.llNutrientes)
+    LinearLayout llNutrientes;
 
-    @BindView(R.id.tvGrupos)
-    TextView tvGrupos;
+//    @BindView(R.id.tvNutrientes)
+//    TextView tvNutrientes;
 
-    @BindView(R.id.tvAlimentos)
-    TextView tvAlimentos;
+    @BindView(R.id.llGrupos)
+    LinearLayout llGrupos;
+
+//    @BindView(R.id.tvGrupos)
+//    TextView tvGrupos;
+
+    @BindView(R.id.llAlimentos)
+    LinearLayout llAlimentos;
+
+//    @BindView(R.id.tvAlimentos)
+//    TextView tvAlimentos;
 
     // Footer
     @BindView(R.id.tvFooter)
@@ -45,7 +55,7 @@ public class PrincipalActivity extends AppCompatActivity {
 
     private void manageClicks() {
 
-        tvNutrientes.setOnClickListener(new View.OnClickListener() {
+        llNutrientes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(PrincipalActivity.this, NutrientesActivity.class);
@@ -53,7 +63,7 @@ public class PrincipalActivity extends AppCompatActivity {
             }
         });
 
-        tvGrupos.setOnClickListener(new View.OnClickListener() {
+        llGrupos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(PrincipalActivity.this, FGActivity.class);
@@ -61,7 +71,7 @@ public class PrincipalActivity extends AppCompatActivity {
             }
         });
 
-        tvAlimentos.setOnClickListener(new View.OnClickListener() {
+        llAlimentos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(PrincipalActivity.this, SearchActivity.class);
