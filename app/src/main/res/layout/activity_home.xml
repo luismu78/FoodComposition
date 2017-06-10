@@ -12,6 +12,7 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/llNutrientes"
             android:layout_width="270dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -39,6 +40,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/llGrupos"
             android:layout_width="270dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -66,6 +68,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/llAlimentos"
             android:layout_width="270dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -80,14 +83,14 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginRight="16dp"
-                android:src="@drawable/grupos" />
+                android:src="@drawable/needle_haystack" />
 
             <TextView
                 android:id="@+id/tvAlimentos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-medium"
-                android:text="Alimentos"
+                android:text="Buscar"
                 android:textSize="27sp" />
 
         </LinearLayout>
